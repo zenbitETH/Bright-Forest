@@ -20,7 +20,7 @@ const center = [
 function MyComponent() {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyBXWiKOGjvCIl3nBc2AysbP1xssG3XrdCc"
+        googleMapsApiKey: ""
     })
 
 
