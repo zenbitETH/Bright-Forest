@@ -21,7 +21,7 @@ circom Multiplier.circom --r1cs --wasm --sym --c
 ## Generates the directory [name]_cpp. 
 ## Contains the equivalent of the wasm directory used to generate the witness of the circuit.
 
-cd Mulitplier_js/
+cd Multiplier_js/
 
 ## Computing the witness with WebAssembly
 ### For this we need to generate a witness: a set of signals that satisfy the circuit. 
@@ -34,7 +34,7 @@ cd Mulitplier_js/
 ## This file is encoded in a binary format compatible with snarkjs, 
 ## which is the tool that we use to create the actual proofs. 
 
-node generate_witness.js Mulitplier.wasm ../input.json witness.wtns
+node generate_witness.js Multiplier.wasm ../input.json witness.wtns
 
 cd ..
 
@@ -61,26 +61,26 @@ snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First con
 
 echo "<===============Phase-2==================>\n \n"
 snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v
-snarkjs groth16 setup Mulitplier.r1cs pot12_final.ptau Mulitplier_0000.zkey
+snarkjs groth16 setup Multiplier.r1cs pot12_final.ptau Multiplier_0000.zkey
 
 echo "-------Making the contribution tau ceremony Phase-2-----\n\n"
-snarkjs zkey contribute Mulitplier_0000.zkey Mulitplier_0001.zkey --name="1st Contributor Name" -v -e="kira"
-snarkjs zkey export verificationkey Mulitplier_0001.zkey verification_key.json
+snarkjs zkey contribute Multiplier_0000.zkey Multiplier_0001.zkey --name="1st Contributor Name" -v -e="kira"
+snarkjs zkey export verificationkey Multiplier_0001.zkey verification_key.json
 
-cp Mulitplier_js/witness.wtns .
+cp Multiplier_js/witness.wtns .
 
 # Once the witness is computed and the trusted setup is already executed,
 # we can generate a zk-proof associated to the circuit and the witness
 
 echo "<===============Generating Proof==================>\n \n"
-snarkjs groth16 prove Mulitplier_0001.zkey witness.wtns proof.json public.json
+snarkjs groth16 prove Multiplier_0001.zkey witness.wtns proof.json public.json
 
 echo "<===============Verifying Proof==================>\n \n"
 snarkjs groth16 verify verification_key.json public.json proof.json
 
 # for generating a smart contract to verify the proof
 echo "<===============Generating Smart Contract==================>\n \n"
-snarkjs zkey export solidityverifier Mulitplier_0001.zkey verifier.sol
+snarkjs zkey export solidityverifier Multiplier_0001.zkey verifier.sol
 echo "<===============Smart Contract Generated==================>\n \n"
 
 # for generating valid params to verify through smart Contract
