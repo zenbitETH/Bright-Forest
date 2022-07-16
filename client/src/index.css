@@ -16,6 +16,7 @@ code {
   bg-gradient-to-t from-ride-300 to-ride-200
   font-bf text-white
   text-center
+  pt-16
 }
 
 .topHud, .bottomHud { 
@@ -72,4 +73,82 @@ code {
 .hudTrips {
   @apply 
   rounded-tr-lg
+}
+
+.screenTitle {
+  @apply 
+  text-3xl text-rider-500 font-bold
+  grid
+}
+
+.screenMargin {
+  @apply
+  mx-3 xl:mx-96
+  xl:text-3xl
+}
+
+.tripCard {
+  @apply 
+  bg-glass-700
+  rounded-lg
+  grid
+  pb-10
+}
+
+.tripDetails, .tripData {
+  @apply
+  p-2
+}
+
+.tripData {
+  @apply
+  text-left
+  text-sm
+  grid
+}
+
+.tripDetails {
+  @apply
+  grid 
+  grid-cols-2
+}
+
+.tripFrom, .tripTo {
+  @apply
+  grid
+  grid-cols-6
+}
+
+.dataValue {
+  @apply
+  text-2xl
+  col-span-4
+  mt-5
+}
+
+.dataTitle {
+  @apply
+  text-sm animate-pulse
+}
+
+.tripFrom {
+  @apply
+  text-ride-900
+}
+
+.tripTo {
+  @apply
+  text-rider-500
+}
+
+
+
+.Button {
+  @apply
+  bg-glass-200 hover:bg-rider-500
+  cursor-pointer
+  text-white hover:text-ride-100
+  rounded-lg
+  text-2xl
+  py-3
 }
