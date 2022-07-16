@@ -13,19 +13,19 @@ function AvailableTrips() {
                             <span class="typeofPlace">Public Park</span>
                             <span class="nameofPlace"> Santa Mónica</span>
                         </div>{/*Type of place and Name from Punk Cities NFT metadata */}
-                        <img class="h-full col-span-2"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png"/>
+                        <img class="PCAsset"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png"/>
                     </div>
-                    <div class="text-center text-4xl animate-bounce">↓</div>
+                    <div class="tripArrow">↓<span class="text-transparent xl:text-white">→</span></div>
                     <div class="tripTo">
                         <div class="dataValue">
                             <div class="dataTitle">To:</div>
-                            <span class="typeofPlace2">Universidad</span>
+                            <span class="typeofPlace2">University</span>
                             <span class="nameofPlace2"> UAQ</span>
                         </div>{/*Type of place and Name from Punk Cities NFT metadata */}
-                        <img class="h-full col-span-2"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/12-University.png"/>
+                        <img class="PCAsset"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/12-University.png"/>
                     </div>
                 </div>
-                <div>
+                <div class="xl:grid-cols-2 grid">
                     <div class="tripDetails">                    
                         <div class="text-rival-100 font-bold">
                             <div class="dataValue">
@@ -38,8 +38,8 @@ function AvailableTrips() {
                             Querétaro</div>                        
                         </div>                    
                     </div>
-                    <div class="mx-20 mt-5">
-                        <div class="Button">Detalles</div>
+                    <div class="mx-20 mt-5 xl:pt-16">
+                        <div class="Button">Details</div>
                     </div>
                 </div>
             </div>
