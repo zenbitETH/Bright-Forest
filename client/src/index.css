@@ -13,10 +13,10 @@ code {
   @apply 
   bg-ride-400
   flex flex-col overflow-auto h-screen
-  bg-gradient-to-t from-ride-300 to-ride-200
+  bg-gradient-to-b from-ride-300 to-ride-200
   font-bf text-white
   text-center
-  pt-16
+  pt-12
 }
 
 .topHud, .bottomHud { 
@@ -104,7 +104,7 @@ code {
   @apply
   text-left
   text-sm
-  grid
+  grid xl:grid-cols-7
 }
 
 .tripDetails {
@@ -116,12 +116,24 @@ code {
 .tripFrom, .tripTo {
   @apply
   grid
-  grid-cols-6
+  grid-cols-6 xl:grid-cols-3 xl:col-span-3
+  xl:text-center
+}
+
+.PCAsset {
+  @apply
+  h-full col-span-2 xl:col-span-3
+}
+
+.tripArrow {
+  @apply
+  text-center text-4xl animate-bounce xl:col-span-1 xl:animate-pulse grid xl:text-transparent
+  xl:font-bold
 }
 
 .dataValue {
   @apply
-  text-2xl
+  text-2xl xl:text-3xl
   col-span-4
   mt-5
 }
@@ -129,6 +141,7 @@ code {
 .dataTitle {
   @apply
   text-sm animate-pulse
+  xl:text-2xl  xl:font-bold
 }
 
 .tripFrom {
@@ -140,7 +153,6 @@ code {
   @apply
   text-rider-500
 }
-
 
 
 .Button {
