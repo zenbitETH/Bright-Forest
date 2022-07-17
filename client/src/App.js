@@ -1,5 +1,5 @@
 import Hud from './components/Hud'
-import Map from './components/GoogleMap';
+import Trip from './Screens/Trip'
 //import ATrips from './Screens/AvaliableTrips'
 
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div class="App">
       <Hud/>
-      <Map/>
+      <Trip/>
     </div>
   );
 }

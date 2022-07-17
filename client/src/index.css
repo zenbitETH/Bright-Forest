@@ -16,7 +16,7 @@ code {
   bg-gradient-to-b from-ride-300 to-ride-200
   font-bf text-white
   text-center
-  pt-12
+  
 }
 
 .topHud, .bottomHud { 
@@ -27,7 +27,8 @@ code {
   text-white
   text-sm
   md:text-xl lg:text-2xl xl:text-2xl xl:grid-cols-3
-  border-none  
+  border-none
+  z-10
 }
 
 .topHud {
@@ -45,7 +46,7 @@ code {
 .hudRider, .hudEnergy, .hudPOAPs, .hudLeader, .hudTrips {
   @apply
   p-2
-  bg-glass-800 hover:bg-ride-900
+  bg-ride-100 hover:bg-ride-900
   text-lg hover:text-ride-100 hover:font-bold
   border-glass-800
   cursor-pointer
@@ -66,14 +67,9 @@ code {
 
 .hudLeader {
   @apply
-  rounded-tl-lg
   hover:bg-rival-500
 }
 
-.hudTrips {
-  @apply 
-  rounded-tr-lg
-}
 
 .screenTitle {
   @apply 
@@ -154,6 +150,40 @@ code {
   text-rider-500
 }
 
+.step1, .step2, .step3, .step4 {
+  @apply
+   text-white  w-full fixed bottom-5 rounded-t-lg drop-shadow-2xl text-ride-100 grid grid-cols-3
+}
+
+.step1 {
+  @apply
+  bg-ride-500
+  h-56
+  animate-pulse
+}
+
+.step2 {
+  @apply
+  bg-ride-900 hover:bg-rider-500 hover:cursor-pointer
+  h-56
+  mb-5
+  animate-pulse
+}
+
+.step3 {
+  @apply
+  bg-rider-500
+  h-96
+  mb-5
+}
+
+.step4 {
+  @apply
+  bg-rider-500 hover:bg-ride-100 hover:text-rider-500 hover:cursor-pointer
+  h-56
+  mb-5
+  animate-pulse
+}
 
 .Button {
   @apply

@@ -2,9 +2,8 @@ import React, {useState, useCallback, useEffect} from 'react'
 import { GoogleMap, useJsApiLoader , Marker, DirectionsRenderer, DirectionsService} from '@react-google-maps/api';
 
 const containerStyle = {
-    align: 'center',
     width: '100%',
-    height: '700px'
+    height: '100vh',
 };
 
 const center = [
@@ -66,7 +65,7 @@ function MyComponent() {
     
 
     return isLoaded ? (
-        <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center z-0">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center[0]}
