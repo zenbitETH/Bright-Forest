@@ -2,7 +2,8 @@ import React, {useState, useCallback, useEffect} from 'react'
 import { GoogleMap, useJsApiLoader , Marker, DirectionsRenderer, DirectionsService} from '@react-google-maps/api';
 
 const containerStyle = {
-    width: '700px',
+    align: 'center',
+    width: '100%',
     height: '700px'
 };
 
@@ -65,24 +66,25 @@ function MyComponent() {
     
 
     return isLoaded ? (
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center[0]}
-            zoom={10}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-            >
-                { /* Child components, such as markers, info windows, etc. */ }
-                <></>
-        <Marker
-            icon={{
-                path: window.google.maps.SymbolPath.CIRCLE,
-                scale: 7,
-            }}
-            position={center[1]}
-        />
-        </GoogleMap>
-
+        <div class="flex flex-col justify-center items-center">
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center[0]}
+                zoom={10}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+                >
+                    { /* Child components, such as markers, info windows, etc. */ }
+                    <></>
+            <Marker
+                icon={{
+                    path: window.google.maps.SymbolPath.CIRCLE,
+                    scale: 7,
+                }}
+                position={center[1]}
+            />
+            </GoogleMap>
+        </div>
 
     ) : <></>
 }
