@@ -101,66 +101,6 @@ PFrElement aux_dest = &lvar[10];
 Fr_copyn(aux_dest,&lvar[19],3);
 }
 {
-char* temp = Fr_element2str(&lvar[0]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[1]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[2]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[4]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[5]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[6]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[7]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[8]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[9]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[10]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[11]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-char* temp = Fr_element2str(&lvar[12]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
 PFrElement aux_dest = &lvar[22];
 // load src
 // end load src
@@ -172,26 +112,26 @@ PFrElement aux_dest = &lvar[23];
 // end load src
 Fr_copy(aux_dest,&circuitConstants[0]);
 }
-Fr_lt(&expaux[0],&lvar[23],&circuitConstants[3]); // line circom 40
+Fr_lt(&expaux[0],&lvar[23],&circuitConstants[3]); // line circom 24
 while(Fr_isTrue(&expaux[0])){
-Fr_eq(&expaux[4],&lvar[0],&lvar[(((3 * Fr_toInt(&lvar[23])) + 0) + 4)]); // line circom 41
-Fr_add(&expaux[7],&lvar[(((3 * Fr_toInt(&lvar[23])) + 1) + 4)],&lvar[3]); // line circom 42
-Fr_leq(&expaux[5],&lvar[1],&expaux[7]); // line circom 42
-Fr_land(&expaux[3],&expaux[4],&expaux[5]); // line circom 41
-Fr_sub(&expaux[6],&lvar[(((3 * Fr_toInt(&lvar[23])) + 1) + 4)],&lvar[3]); // line circom 43
-Fr_geq(&expaux[4],&lvar[1],&expaux[6]); // line circom 43
-Fr_land(&expaux[2],&expaux[3],&expaux[4]); // line circom 41
-Fr_add(&expaux[5],&lvar[(((3 * Fr_toInt(&lvar[23])) + 2) + 4)],&lvar[3]); // line circom 44
-Fr_leq(&expaux[3],&lvar[2],&expaux[5]); // line circom 44
-Fr_land(&expaux[1],&expaux[2],&expaux[3]); // line circom 41
-Fr_sub(&expaux[4],&lvar[(((3 * Fr_toInt(&lvar[23])) + 1) + 4)],&lvar[3]); // line circom 45
-Fr_geq(&expaux[2],&lvar[2],&expaux[4]); // line circom 45
-Fr_land(&expaux[0],&expaux[1],&expaux[2]); // line circom 41
+Fr_eq(&expaux[4],&lvar[0],&lvar[(((3 * Fr_toInt(&lvar[23])) + 0) + 4)]); // line circom 25
+Fr_add(&expaux[7],&lvar[(((3 * Fr_toInt(&lvar[23])) + 1) + 4)],&lvar[3]); // line circom 26
+Fr_leq(&expaux[5],&lvar[1],&expaux[7]); // line circom 26
+Fr_land(&expaux[3],&expaux[4],&expaux[5]); // line circom 25
+Fr_sub(&expaux[6],&lvar[(((3 * Fr_toInt(&lvar[23])) + 1) + 4)],&lvar[3]); // line circom 27
+Fr_geq(&expaux[4],&lvar[1],&expaux[6]); // line circom 27
+Fr_land(&expaux[2],&expaux[3],&expaux[4]); // line circom 25
+Fr_add(&expaux[5],&lvar[(((3 * Fr_toInt(&lvar[23])) + 2) + 4)],&lvar[3]); // line circom 28
+Fr_leq(&expaux[3],&lvar[2],&expaux[5]); // line circom 28
+Fr_land(&expaux[1],&expaux[2],&expaux[3]); // line circom 25
+Fr_sub(&expaux[4],&lvar[(((3 * Fr_toInt(&lvar[23])) + 1) + 4)],&lvar[3]); // line circom 29
+Fr_geq(&expaux[2],&lvar[2],&expaux[4]); // line circom 29
+Fr_land(&expaux[0],&expaux[1],&expaux[2]); // line circom 25
 if(Fr_isTrue(&expaux[0])){
 {
 PFrElement aux_dest = &lvar[22];
 // load src
-Fr_add(&expaux[0],&lvar[22],&circuitConstants[1]); // line circom 46
+Fr_add(&expaux[0],&lvar[22],&circuitConstants[1]); // line circom 30
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
@@ -199,11 +139,11 @@ Fr_copy(aux_dest,&expaux[0]);
 {
 PFrElement aux_dest = &lvar[23];
 // load src
-Fr_add(&expaux[0],&lvar[23],&circuitConstants[1]); // line circom 40
+Fr_add(&expaux[0],&lvar[23],&circuitConstants[1]); // line circom 24
 // end load src
 Fr_copy(aux_dest,&expaux[0]);
 }
-Fr_lt(&expaux[0],&lvar[23],&circuitConstants[3]); // line circom 40
+Fr_lt(&expaux[0],&lvar[23],&circuitConstants[3]); // line circom 24
 }
 // return bucket
 Fr_copy(destination,&lvar[22]);
@@ -232,7 +172,7 @@ u32* mySubcomponents = ctx->componentMemory[ctx_index].subcomponents;
 FrElement* circuitConstants = ctx->circuitConstants;
 std::string* listOfTemplateMessages = ctx->listOfTemplateMessages;
 FrElement expaux[5];
-FrElement lvar[1];
+FrElement lvar[0];
 uint sub_component_aux;
 {
 
@@ -250,21 +190,10 @@ Fr_copy(&lvarcall[2],&signalValues[mySignalStart + 3]);
 // copying argument 3
 Fr_copy(&lvarcall[3],&signalValues[mySignalStart + 4]);
 // end copying argument 3
-isValidPunkCity_0(ctx,lvarcall,&lvar[0],1);
+isValidPunkCity_0(ctx,lvarcall,&signalValues[mySignalStart + 0],1);
 // end call bucket
 }
 
-{
-char* temp = Fr_element2str(&lvar[0]);
-printf("%s\n",temp);
-delete [] temp;
-}
-{
-PFrElement aux_dest = &signalValues[mySignalStart + 0];
-// load src
-// end load src
-Fr_copy(aux_dest,&lvar[0]);
-}
 }
 
 void run(Circom_CalcWit* ctx){
