@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import Hud from './Components/Hud'
-import ATrips from './Screens/AvaliableTrips'
+import Hud from './components/Hud'
+import Trip from './Screens/Trip'
+//import ATrips from './Screens/AvaliableTrips'
 
 
 function App() {
   return (
-    <div className="App">
+    <div class="App">
       <Hud/>
-      <ATrips/>
+      <Trip/>
     </div>
   );
 }
