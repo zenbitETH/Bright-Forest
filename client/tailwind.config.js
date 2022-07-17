@@ -46,7 +46,6 @@ module.exports = {
                   100: "#5463ff",//City
               },
               
-
             glass: {
                 900: "#ffffff00",//Full 
                 800: "#ffffff15",//Dark 
