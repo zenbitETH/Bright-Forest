@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,8 +7,175 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+=======
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> UI
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+<<<<<<< HEAD
 } */
+=======
+}
+
+.App {
+  @apply 
+  bg-ride-400
+  flex flex-col overflow-auto h-screen
+  bg-gradient-to-b from-ride-300 to-ride-200
+  font-bf text-white
+  text-center
+  pt-12
+}
+
+.topHud, .bottomHud { 
+  @apply 
+  xl:mx-96
+  fixed grid  items-center left-0 right-0
+  rounded-b-lg
+  text-white
+  text-sm
+  md:text-xl lg:text-2xl xl:text-2xl xl:grid-cols-3
+  border-none  
+}
+
+.topHud {
+  @apply
+  top-0
+  grid-cols-3
+}
+
+.bottomHud {
+  @apply
+  bottom-0
+  grid-cols-2
+}
+
+.hudRider, .hudEnergy, .hudPOAPs, .hudLeader, .hudTrips {
+  @apply
+  p-2
+  bg-glass-800 hover:bg-ride-900
+  text-lg hover:text-ride-100 hover:font-bold
+  border-glass-800
+  cursor-pointer
+}
+
+.hudRider {
+  @apply
+  rounded-bl-lg
+  border-r
+  hover:bg-rider-500
+}
+
+.hudPOAPs {
+  @apply
+  rounded-br-lg
+  border-l
+}
+
+.hudLeader {
+  @apply
+  rounded-tl-lg
+  hover:bg-rival-500
+}
+
+.hudTrips {
+  @apply 
+  rounded-tr-lg
+}
+
+.screenTitle {
+  @apply 
+  text-3xl text-rider-500 font-bold
+  grid
+}
+
+.screenMargin {
+  @apply
+  mx-3 xl:mx-96
+  xl:text-3xl
+}
+
+.tripCard {
+  @apply 
+  bg-glass-700
+  rounded-lg
+  grid
+  pb-10
+}
+
+.tripDetails, .tripData {
+  @apply
+  p-2
+}
+
+.tripData {
+  @apply
+  text-left
+  text-sm
+  grid xl:grid-cols-7
+}
+
+.tripDetails {
+  @apply
+  grid 
+  grid-cols-2
+}
+
+.tripFrom, .tripTo {
+  @apply
+  grid
+  grid-cols-6 xl:grid-cols-3 xl:col-span-3
+  xl:text-center
+}
+
+.PCAsset {
+  @apply
+  h-full col-span-2 xl:col-span-3
+}
+
+.tripArrow {
+  @apply
+  text-center text-4xl animate-bounce xl:col-span-1 xl:animate-pulse grid xl:text-transparent
+  xl:font-bold
+}
+
+.dataValue {
+  @apply
+  text-2xl xl:text-3xl
+  col-span-4
+  mt-5
+}
+
+.dataTitle {
+  @apply
+  text-sm animate-pulse
+  xl:text-2xl  xl:font-bold
+}
+
+.tripFrom {
+  @apply
+  text-ride-900
+}
+
+.tripTo {
+  @apply
+  text-rider-500
+}
+
+
+.Button {
+  @apply
+  bg-glass-200 hover:bg-rider-500
+  cursor-pointer
+  text-white hover:text-ride-100
+  rounded-lg
+  text-2xl
+  py-3
+}
+>>>>>>> UI
