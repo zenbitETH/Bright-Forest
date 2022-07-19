@@ -47,7 +47,7 @@ code {
   @apply
   p-2
   bg-ride-100 hover:bg-ride-900
-  text-lg hover:text-ride-100 hover:font-bold
+  hover:text-ride-100 hover:font-bold
   border-glass-800
   cursor-pointer
 }
@@ -92,7 +92,7 @@ code {
 
 .tripCard {
   @apply 
-  bg-glass-700
+
   xl:rounded-lg
   grid
   pb-5
@@ -114,7 +114,7 @@ code {
   @apply
   grid 
   grid-cols-2
-  bg-rider-900 rounded-lg
+  bg-ride-900 rounded-lg
 }
 
 .tripFrom, .tripTo {
