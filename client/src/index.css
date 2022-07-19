@@ -12,11 +12,11 @@ code {
 .App {
   @apply 
   bg-ride-400
-  flex flex-col overflow-auto h-screen
-  bg-gradient-to-b from-ride-300 to-ride-200
+  flex flex-col overflow-auto h-screen 
+  bg-gradient-to-b from-ride-300 to-ride-400
   font-bf text-white
   text-center
-  
+  -mt-5 xl:mt-0
 }
 
 .topHud, .bottomHud { 
@@ -47,9 +47,14 @@ code {
   @apply
   p-2
   bg-ride-100 hover:bg-ride-900
-  text-lg hover:text-ride-100 hover:font-bold
+  hover:text-ride-100 hover:font-bold
   border-glass-800
   cursor-pointer
+}
+
+.hudTrips {
+  @apply 
+  xl:rounded-tr-lg
 }
 
 .hudRider {
@@ -68,32 +73,34 @@ code {
 .hudLeader {
   @apply
   hover:bg-rival-500
+  xl:rounded-tl-lg
 }
 
 
 .screenTitle {
   @apply 
-  text-3xl text-rider-500 font-bold
-  grid
+  text-2xl text-rider-500 font-bold
 }
 
 .screenMargin {
   @apply
-  mx-3 xl:mx-96
+  my-auto
+  xl:mx-96
   xl:text-3xl
+  
 }
 
 .tripCard {
   @apply 
-  bg-glass-700
-  rounded-lg
+
+  xl:rounded-lg
   grid
-  pb-10
+  pb-5
 }
 
-.tripDetails, .tripData {
+ .tripData {
   @apply
-  p-2
+  px-2
 }
 
 .tripData {
@@ -107,11 +114,13 @@ code {
   @apply
   grid 
   grid-cols-2
+  bg-ride-900 rounded-lg
 }
 
 .tripFrom, .tripTo {
   @apply
   grid
+  
   grid-cols-6 xl:grid-cols-3 xl:col-span-3
   xl:text-center
 }
@@ -129,9 +138,9 @@ code {
 
 .dataValue {
   @apply
-  text-2xl xl:text-3xl
+  text-xl xl:text-3xl
   col-span-4
-  mt-5
+  my-1
 }
 
 .dataTitle {
