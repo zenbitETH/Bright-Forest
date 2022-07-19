@@ -27,25 +27,27 @@ function AvailableTrips() {
                         <img class="PCAsset"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/12-University.png"/>
                     </div>
                 </div>
-                <div class="grid xl:grid-cols-2">
-                    <div class="tripDetails">                    
-                        <div class="text-rival-100 font-bold">
+                <div class="grid xl:grid-cols-2 ">
+                    <div class="tripDetails">   
+                        <div class="bg-rider-900 font-bold ">
+                            <div class="dataValue xl:text-xl">
+                            <div class="dataTitle xl:text-lg">Distance</div>
+                            15km
+                            </div>
+                        </div>                 
+                        
+                        <div class="font-bold bg-rider-900 xl:rounded-tr-lg">
+                            <div class="dataValue xl:text-xl"><div class="dataTitle xl:text-lg">City:</div>
+                            Querétaro</div>                        
+                        </div> 
+                        <div class="bg-rival-500 text-ride-100 font-bold rounded-tr-lg xl:rounded-bl-lg">
                             <div class="dataValue xl:text-xl">
                             <div class="dataTitle xl:text-lg">Best time:</div>
                                 00:59:59 {/*Hours:Minutes:Seconds */}
                             </div>
-                        </div>
-                        <div class="font-bold">
-                            <div class="dataValue xl:text-xl"><div class="dataTitle xl:text-lg">City:</div>
-                            Querétaro</div>                        
-                        </div>                   
-                        <div class="text-ride-900 font-bold">
-                            <div class="dataValue xl:text-xl">
-                            <div class="dataTitle xl:text-lg">Load:</div>
-                            10⚡
-                            </div>
-                        </div>
-                        <div class="font-bold text-rider-100">
+                        </div>                  
+                        
+                        <div class="font-bold bg-rider-500 text-ride-100 rounded-tl-lg xl:rounded-br-lg">
                             <div class="dataValue xl:text-xl"><div class="dataTitle xl:text-lg">Reward:</div>
                             5⚡</div>                        
                         </div>                     

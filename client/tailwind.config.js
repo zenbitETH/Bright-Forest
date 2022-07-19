@@ -11,8 +11,8 @@ module.exports = {
           colors: {
               display: ["group-hover"],
               rider: {
-                900: "#abb0a3",
-                800: "#adbd96",
+                900: "#565656",
+                800: "#abb0a3",
                 700: "#b5eb68",
                 600: "#b7f261",
                 500: "#b9ff54",//Main
@@ -48,7 +48,7 @@ module.exports = {
               
             glass: {
                 900: "#ffffff00",//Full 
-                800: "#ffffff15",//Dark 
+                800: "#56565675",//Dark 
                 700: "#abb0a350",//Light
                 600: "#ffffff50",//Light
                 500: "#00064050",//Ride 
