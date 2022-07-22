@@ -1,14 +1,15 @@
-import Hud from './components/Hud'
-import Map from './components/GoogleMap';
+import {BrowserRouter , Routes, Route} from"react-router-dom";
+import Hud from './Components/Hud';
 //import ATrips from './Screens/AvaliableTrips'
 
 
 function App() {
   return (
-    <div class="App">
-      <Hud/>
-      <Map/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Hud />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

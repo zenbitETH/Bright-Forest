@@ -1,5 +1,5 @@
-import React, {useState, useCallback, useEffect} from 'react'
-import { GoogleMap, useJsApiLoader , Marker, DirectionsRenderer, DirectionsService} from '@react-google-maps/api';
+import {useRef, useState} from 'react';
+import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer} from '@react-google-maps/api';
 
 const containerStyle = {
     align: 'center',
@@ -12,81 +12,82 @@ const center = [
     {lat: 25.98791, lng: -80.30057}
 ];
 
-const mapsKey = process.env.REACT_APP_MAPS_API_KEY;
-const geoKey = process.env.REACT_APP_GEOLOCATION_API_KEY;
+const lib = ['geometry', 'places','drawing'];
 
-
-function MyComponent() {
+function GoogleTest() {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: mapsKey
+        googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+        libraries: lib
     })
 
     const [map, setMap] = useState(null);
-    const [location, setLocation] = useState({});
-    // const getLocation = async() => {
-    //     // const headers = {};
-    //     // const response = await axios.post(
-    //     //     ""
-    //     // )
-    //     // const data = await response.json();
-    //     // setLocation(data);
-    //     return({location:{lat: 25.98791, lng:-80.30057}})
-    // }
+    const [directionsResult, setDirectionsResult] = useState(null);
 
-    const onLoad = useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(center[0]);
-        const DirectionsService = new window.google.maps.DirectionsService();
+    const originRef = useRef();
+    const destinationRef = useRef();
 
-        const directions = {
-                origin: new window.google.maps.LatLngBounds(center[1]),
-                destination: new window.google.maps.LatLngBounds(center[0]),
-                travelMode: window.google.maps.TravelMode.BICYCLING
-                }
-        DirectionsService.route(
-            directions,
-            (result, status) => {
-                if (status === window.google.maps.DirectionsStatus.OK) {
-                    setLocation({
-                        directions: result
-                    });
-                } else {
-                    console.error(`error fetching directions ${result}`);
-                }
-            }
-        )
-        map.fitBounds(bounds);
-        setMap(map)
-    }, [])
+    if (!isLoaded) {
+        return <h1>Loading the map!</h1>
+    }
 
-    const onUnmount = useCallback(function callback(map) {
-        setMap(null)
-    }, [])
+    async function calculateRoute() {
     
-    
+        if (originRef.current === '' || destinationRef.current === '') {
+            return
+        }
+        const directionsService = new window.google.maps.DirectionsService();
+        const results = await directionsService.route({
+            origin: originRef.current,
+            destination: destinationRef.current,
+            travelMode: window.google.maps.TravelMode.Bicycling
+        })
 
-    return isLoaded ? (
-        <div class="flex flex-col justify-center items-center">
+        setDirectionsResult(results);
+    }
+    
+    function clearRoute() {
+
+        setDirectionsResult(null)
+        originRef.current = ''
+        destinationRef.current = ''
+    }
+    
+    return (
+        <div className="flex flex-col justify-center items-center">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center[0]}
                 zoom={10}
-                onLoad={onLoad}
-                onUnmount={onUnmount}
-                >
-                    { /* Child components, such as markers, info windows, etc. */ }
-                    <></>
+                onLoad={map => setMap}
+            >
             <Marker
                 icon={{
                     path: window.google.maps.SymbolPath.CIRCLE,
                     scale: 7,
                 }}
                 position={center[1]}
-            />
+                />
+                {directionsResult && (<DirectionsRenderer directions={directionsResult} />)}
             </GoogleMap>
+            <form>
+                <Autocomplete>
+                <input 
+                    type='text' 
+                    placeholder='Origin' 
+                    ref={originRef} />
+                </Autocomplete>
+                <Autocomplete>
+                <input
+                    type='text'
+                    placeholder='Destination'
+                    ref={destinationRef}
+                />
+                </Autocomplete>
+                <button type="submit"onClick={calculateRoute} method="post">Submit</button>
+            </form>
         </div>
-
-    ) : <></>
+    ) 
 }
 
-export default React.memo(MyComponent);
+export default GoogleTest;
