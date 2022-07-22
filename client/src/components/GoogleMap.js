@@ -75,13 +75,15 @@ function GoogleTest() {
                 <input 
                     type='text' 
                     placeholder='Origin' 
-                    ref={originRef} />
+                    ref={originRef}
+                    className='text-black' />
                 </Autocomplete>
                 <Autocomplete>
                 <input
                     type='text'
                     placeholder='Destination'
                     ref={destinationRef}
+                    className='text-black'
                 />
                 </Autocomplete>
                 <button type="submit"onClick={calculateRoute} method="post">Submit</button>
