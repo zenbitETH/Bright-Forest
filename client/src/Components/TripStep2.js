@@ -1,4 +1,4 @@
-import Map from '../components/GoogleMap'
+import Map from './GoogleMap'
 
 function TripStep2() {
     return (

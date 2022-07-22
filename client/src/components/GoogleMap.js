@@ -51,7 +51,7 @@ function GoogleTest() {
         destinationRef.current = ''
     }
     
-    return is Loaded ? (
+    return isLoaded ? (
         <div className="flex flex-col justify-center items-center">
             <GoogleMap
                 mapContainerStyle={containerStyle}
@@ -87,7 +87,7 @@ function GoogleTest() {
                 <button type="submit"onClick={calculateRoute} method="post">Submit</button>
             </form>
         </div>
-    ) 
+    ) : <></>
 }
 
 export default GoogleTest;
