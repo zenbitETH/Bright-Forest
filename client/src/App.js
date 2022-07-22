@@ -1,6 +1,7 @@
 import {BrowserRouter , Routes, Route} from"react-router-dom";
 import Hud from './Components/Hud';
 //import ATrips from './Screens/AvaliableTrips'
+import PTrips from './Screens/PastTrips'
 
 
 function App() {

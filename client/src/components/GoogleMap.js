@@ -2,9 +2,8 @@ import {useRef, useState} from 'react';
 import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer} from '@react-google-maps/api';
 
 const containerStyle = {
-    align: 'center',
     width: '100%',
-    height: '700px'
+    height: '100vh',
 };
 
 const center = [
@@ -47,13 +46,12 @@ function GoogleTest() {
     }
     
     function clearRoute() {
-
         setDirectionsResult(null)
         originRef.current = ''
         destinationRef.current = ''
     }
     
-    return (
+    return is Loaded ? (
         <div className="flex flex-col justify-center items-center">
             <GoogleMap
                 mapContainerStyle={containerStyle}
