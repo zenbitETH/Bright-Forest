@@ -185,6 +185,50 @@ code {
   bg-glass-800
 }
 
+.pastCard {
+  @apply
+  w-full text-sm  text-left text-white grid gap-3 pt-3
+}
+
+.pastGrid {
+  @apply
+  grid gap-2 grid-cols-11 border-b border-glass-700 xl:text-lg rounded-lg bg-glass-800
+}
+
+.pastHeader {
+  @apply 
+  pl-2 col-span-11 bg-ride-100 text-ride-900  font-bold py-2 rounded-t-lg
+  xl:text-2xl grid grid-cols-6
+}
+
+.pastTime {
+  @apply
+  col-span-2 text-xl text-center xl:pt-20 pt-28 xl:text-4xl
+}
+
+.pastPlace {
+  @apply
+  col-span-4 text-center pt-5 xl:h-56 xl:pb-10 xl:text-xl
+}
+
+.placeAssets {
+  @apply 
+  grid grid-cols-2 text-center
+}
+
+.pastRider {
+  @apply
+  bg-rider-500 text-ride-100 grid grid-cols-11 col-span-11 rounded-b-lg text-xs font-bold xl:text-lg
+}
+
+.riderAddress {
+  @apply pl-2 col-span-9 pt-5 xl:pt-3
+}
+
+.riderReward {
+  @apply
+  col-span-2 text-center py-3 bg-ride-900 rounded-br-lg font-bold text-xl
+}
 
 .tripData {
   @apply
@@ -212,7 +256,12 @@ code {
 
 .PCAsset {
   @apply
-  h-full col-span-2 h-3/5 xl:h-1/3 mx-auto;
+  col-span-2 h-3/5 xl:h-1/3 mx-auto;
+}
+
+.PCAsset2 {
+  @apply
+  col-span-2 xl:h-2/3 mx-auto;
 }
 
 .tripArrow {

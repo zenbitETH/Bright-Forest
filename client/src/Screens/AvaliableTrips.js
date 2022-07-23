@@ -10,8 +10,8 @@ function AvailableTrips() {
                     <div class="tripFrom">
                         <div class="dataValue">
                             <div class="dataTitle">From:</div>
-                            <span class="typeofPlace">Public Park</span>
                             <span class="nameofPlace"> Santa Mónica</span>
+                            <span class="typeofPlace">Public Park</span>
                             <div class=""> -10⚡</div>
                         </div>{/*Type of place and Name from Punk Cities NFT metadata */}
                         <img class="PCAsset"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png"/>
@@ -20,8 +20,8 @@ function AvailableTrips() {
                     <div class="tripTo">
                         <div class="dataValue">
                             <div class="dataTitle">To:</div>
-                            <span class="typeofPlace2">Goverment Office</span>
                             <span class="nameofPlace2"> Delegación FCP</span>
+                            <span class="typeofPlace2">Goverment Office</span>
                             <div class=""> +10⚡</div>
                         </div>{/*Type of place and Name from Punk Cities NFT metadata */}
                         <img class="PCAsset"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/14-Goverment%20office.png"/>
