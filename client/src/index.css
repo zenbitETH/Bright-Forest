@@ -164,9 +164,19 @@ code {
   rounded-full h-32 w-32 mx-auto
 }
 
-.screenTitle {
+.screenTitle, .leaderTitle {
   @apply 
   text-2xl text-rider-500 font-bold
+}
+
+.screenTitle {
+  @apply
+  text-rider-500
+}
+
+.leaderTitle {
+  @apply
+  text-rival-100
 }
 
 .screenMargin {
@@ -174,7 +184,6 @@ code {
   mt-20 mb-20
   xl:mx-96
   xl:text-3xl
-  
 }
 
 .tripCard {
@@ -345,4 +354,26 @@ code {
   rounded-lg
   text-2xl
   py-3
+}
+
+.rivalCard {
+  @apply
+  rounded-lg
+  bg-glass-300
+  mt-3
+}
+
+.rivalAddress {
+  @apply
+  bg-rival-500
+  text-ride-300
+  rounded-t-lg
+  py-2
+  
+}
+
+.rivalStats {
+  @apply
+  grid grid-cols-4
+  my-2
 }
