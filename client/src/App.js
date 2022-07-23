@@ -4,6 +4,7 @@ import Home from "./Screens/Home";
 import AvailableTrips from './Screens/AvaliableTrips'
 import Trip from './Screens/Trip'
 import PastTrips from './Screens/PastTrips'
+import Leaderboard from "./Screens/Leaderboard";
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <Hud/>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PastTrips />} />
+        <Route path="/" element={<Leaderboard />} />
       </Routes>
     </BrowserRouter>
     </div>
