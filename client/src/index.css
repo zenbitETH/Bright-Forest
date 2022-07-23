@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,7 +13,7 @@ code {
   @apply 
   bg-ride-400
   flex flex-col overflow-auto h-screen 
-  bg-gradient-to-b from-ride-300 to-ride-400
+  bg-gradient-to-b from-ride-400 to-ride-400
   font-bf text-white
   text-center
   -mt-5 xl:mt-0
@@ -43,13 +43,22 @@ code {
   grid-cols-2
 }
 
-.hudRider, .hudEnergy, .hudPOAPs, .hudLeader, .hudTrips {
+.hudRider, .hudEnergy, .hudPOAPs, .hudLeader, .hudTrips, .hudWallet {
   @apply
   p-2
   bg-ride-100 hover:bg-ride-900
   hover:text-ride-100 hover:font-bold
   border-glass-800
   cursor-pointer
+}
+
+.hudWallet {
+  @apply
+  col-span-3
+  rounded-b-lg
+  animate-pulse
+  hover:bg-rider-500
+  text-2xl
 }
 
 .hudTrips {
@@ -76,6 +85,83 @@ code {
   xl:rounded-tl-lg
 }
 
+.logos {
+  @apply
+  xl:w-1/2 mx-auto
+}
+
+.logosBG, .logosBG2 {
+  @apply
+  col-span-2
+  hover:cursor-pointer hover:bg-glass-200
+  rounded-lg xl:text-3xl
+}
+
+.smallBG, .smallBG2, {
+  @apply
+  col-span-4 rounded-lg text-xl pt-10 xl:text-3xl 
+   hover:cursor-pointer py-10 
+}
+
+.smallBG {
+  @apply hover:bg-glass-200
+}
+
+
+.smallBG2 {
+  @apply hover:bg-glass-500
+}
+
+.smallBG3 {
+  @apply hover:bg-glass-400
+  rounded-lg text-sm pt-10 xl:text-3xl 
+  hover:cursor-pointer py-10 
+}
+
+.bigIcon {
+  @apply 
+  text-8xl animate-pulse
+  pb-3
+}
+
+.bigBG, .bigBG2 {
+  @apply border-glass-700 rounded-lg grid grid-cols-4 gap-3 mb-10 xl:mx-96 bg-glass-800 pb-5 
+}
+
+.bigBG{
+  @apply
+  grid-cols-4
+}
+
+.bigBG2 {
+  @apply
+  grid-cols-3
+}
+.bgTitle, .bgTitle2, .bgTitle3 {
+  @apply text-3xl mt-5 col-span-4 text-ride-900
+}
+
+.bgTitle {
+  @apply text-ride-900
+}
+
+.bgTitle2 {
+  @apply text-ride-500
+}
+
+.bgTitle3 {
+  @apply text-rider-500
+}
+
+.builtBG {
+  @apply 
+  bg-glass-800 hover:bg-ride-100 hover:text-rider-500 rounded-lg p-5
+}
+
+.teamIMG {
+  @apply
+  rounded-full h-32 w-32 mx-auto
+}
 
 .screenTitle {
   @apply 

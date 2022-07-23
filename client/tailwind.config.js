@@ -51,7 +51,7 @@ module.exports = {
                 800: "#56565675",//Dark 
                 700: "#abb0a350",//Light
                 600: "#ffffff50",//Light
-                500: "#00064050",//Ride 
+                500: "#ff546350",//Error 
                 400: "#b9ff5450",//Rider
                 300: "#ff9b5450",//Rive
                 200: "#fff05450",//Building
@@ -66,8 +66,7 @@ module.exports = {
               'lg': '25px',
           },
           fontFamily: {
-              bf: ['"Space Mono"'],
-              lex: ['"Lexend Deca"'],
+              bf: ['"K2D"'],
           },
           container: {
               center: true,
