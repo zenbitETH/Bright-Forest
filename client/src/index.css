@@ -50,6 +50,7 @@ code {
   hover:text-ride-100 hover:font-bold
   border-glass-800
   cursor-pointer
+  
 }
 
 .hudWallet {
@@ -218,7 +219,7 @@ code {
 
 .tripArrow {
   @apply
-  text-center text-4xl animate-bounce xl:col-span-1 xl:animate-pulse grid xl:text-transparent
+  text-center text-4xl animate-bounce col-span-4 grid 
   xl:font-bold
 }
 
@@ -245,9 +246,14 @@ code {
   text-rider-500
 }
 
+.stepIMG {
+  @apply 
+  xl:w-1/2
+}
+
 .step1, .step2, .step3, .step4 {
   @apply
-   text-white  w-full fixed bottom-5 rounded-t-lg drop-shadow-2xl text-ride-100 grid grid-cols-3
+   text-white  w-full fixed bottom-5 left-0 right-0 rounded-t-lg drop-shadow-2xl text-ride-100 grid xl:mx-auto xl:w-1/2
 }
 
 .step1 {
@@ -255,6 +261,7 @@ code {
   bg-ride-500
   h-56
   animate-pulse
+  grid-cols-3 
 }
 
 .step2 {
@@ -263,6 +270,7 @@ code {
   h-56
   mb-5
   animate-pulse
+  grid-cols-3 
 }
 
 .step3 {
@@ -270,6 +278,7 @@ code {
   bg-rider-500
   h-96
   mb-5
+  grid-cols-4 
 }
 
 .step4 {
@@ -278,6 +287,7 @@ code {
   h-56
   mb-5
   animate-pulse
+  grid-cols-3 
 }
 
 .Button {

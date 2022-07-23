@@ -9,7 +9,8 @@ function TripStep1() {
                 <span> Santa Mónica</span>
                 <div class="text-lg">in Querétaro City</div>
             </div>
-            <img alt="Origin 3d asset" class="w-3/4"src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png"/>
+            <img alt="Origin 3d asset" class="stepIMG" src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png"/>
+            
         </div>
     )
 }
