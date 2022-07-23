@@ -9,7 +9,7 @@ function Home() {
         <Hud/>
         <section className='my-20 '>
             <img src={BF} className='xl:w-1/3 w-96 mx-auto'/>
-            <div className='text-xl xl:text-3xl'>A dapp to gamify bicycle rides on Punk Cities</div>
+            <div className='text-xl xl:text-3xl'>A dapp to gamify urban mobility with bicycle rides</div>
             <div className='text-lg'>Developed @ HackFS 2022</div>
         </section>
         <section className=''>
