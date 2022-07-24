@@ -1,12 +1,17 @@
-import {useRef, useState} from 'react';
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer} from '@react-google-maps/api';
 import axios from 'axios';
+import {useRef, useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
+import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer} from '@react-google-maps/api';
+import * as timer from "../Scripts/timer";
+import {calcArea} from "../Scripts/zone";
+import tripData from "../Data/trips.json"
 
 const containerStyle = {
     width: '100%',
-    height: '700px',
-    align: 'center'
+    height: '100vh',
+
 };
+
 
 
 const lib = ['geometry', 'places','drawing'];
@@ -26,14 +31,47 @@ function GoogleTest() {
     })
     const [map, setMap] = useState(null);
     const [directionsResult, setDirectionsResult] = useState(null);
+    const [duration, setDuration] = useState('');
+    const [distance, setDistance] = useState('');
+    const [location, setLocation] = useState(null);
+    const [marker, setMarker] = useState(null);
+
+    const navigate = useNavigate()
 
     const originRef = useRef();
     const destinationRef = useRef();
 
+    // Poll location every 30 seconds.
+    setInterval(checkProximity(tripData), 30000);
+
+    useEffect(() =>{
+        if(!marker){
+            return
+        }
+        updateMarker(marker)
+    }, [location])
+
     if (!isLoaded) {
         return <h1>Loading the map!</h1>
     }
+
     
+
+    async function checkProximity(tripData) {
+        const coord = await getCurrentLocation();
+        setLocation(coord);
+        const tripC = tripData[0].startLocation.coordinates
+        const area = calcArea(tripC.lat, tripC.long, 1.5) // latitude, longitude, and distance in km.
+
+        const result = area.inArea(coord.lat, coord.long)
+        if(result){
+            navigate("/trip")
+        
+        } else {
+            // do nothing
+        }
+
+    }
     async function getCurrentLocation() {
         const request = {
             "homeMobileCountryCode": 310,
@@ -55,6 +93,7 @@ function GoogleTest() {
 
     async function updateMarker(marker){
         marker.setPosition(await getCurrentLocation())
+        setMarker(marker);
     }
 
     async function updateMap(map){
@@ -75,12 +114,34 @@ function GoogleTest() {
         })
         console.log(results)
         setDirectionsResult(results);
+        setDuration(results.routes[0].legs[0].duration.text)
+        setDistance(results.routes[0].legs[0].distance.text)
+    }
+
+    async function routeDetected(tripData) {
+        if (originRef.current.value === '' || destinationRef.current.value === '') {
+            return
+        }
+        const directionsService = new window.google.maps.DirectionsService();
+        const results = await directionsService.route({
+            origin: originRef.current.value,
+            destination: destinationRef.current.value,
+            travelMode: window.google.maps.TravelMode.BICYCLING
+        })
+        console.log(results)
+        setDirectionsResult(results);
+        setDuration(results.routes[0].legs[0].duration.text)
+        setDistance(results.routes[0].legs[0].distance.text)
     }
     
     function clearRoute() {
         setDirectionsResult(null)
+        setDuration('')
+        setDistance('')
         originRef.current.value = ''
         destinationRef.current.value = ''
+
+
     }
     
     return isLoaded ? (
@@ -116,8 +177,15 @@ function GoogleTest() {
                     className='text-black'
                 />
                 </Autocomplete>
-                <button onClick={calculateRoute}>Submit</button>
-                <button onClick={clearRoute}>Clear</button>
+                <div className="flex gap-4 divide-x border-2">
+                    <button onClick={calculateRoute}>Submit</button>
+                    <button onClick={clearRoute}>Clear</button> 
+                    <button onClick={timer.startTimer}>Start Trip</button>
+                    <button onClick={timer.clearTimer}>End Trip</button>
+                    {/* <button onClick={handleClick}>Page change</button> */}
+                    <h1>Distance: {distance}</h1>
+                    <h1>Duration: {duration}</h1> 
+                </div>
         </div>
     ) : <></>
 }
