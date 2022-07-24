@@ -9,13 +9,19 @@ import Leaderboard from "./Screens/Leaderboard";
 
 function App() {
   return (
-    <div className="App">
-    <Hud/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Leaderboard />} />
-      </Routes>
-    </BrowserRouter>
+    <div class="App">
+      <Hud />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TripOne />} />
+          <Route path="/trip2" element={<TripTwo />} />
+          <Route path="/trip3" element={<TripThree />} />
+          <Route path="/trip4" element={<TripFour />} />
+          <Route path="/availabletrips" element={<ATrips />} />
+          <Route path="/pasttrips" element={<PTrips />} />
+          <Route path="/maponly" element={<Map/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
