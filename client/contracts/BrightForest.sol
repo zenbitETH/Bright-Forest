@@ -1,6 +1,5 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
-
 import "../node_modules/@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "./verifier.sol";
 
@@ -32,8 +31,8 @@ contract BrightForest is ERC1155 {
         string hometown;
         string country;
         // power of 4 or 5
-        uint256 latitude;
-        uint256 longitude;
+        int latitude;
+        int longitude;
         uint256 distanceTravelled;
         uint256 energyReward;
     }
@@ -45,8 +44,8 @@ contract BrightForest is ERC1155 {
         string cityName;
         uint256 cityId;
         bytes32 locationHash;
-        uint256 latitude;
-        uint256 longitude;
+        int latitude;
+        int longitude;
         uint256 energy;
     }
     PunkCity punkCity;
@@ -91,8 +90,8 @@ contract BrightForest is ERC1155 {
         PlaceType _placeType,
         uint256 _energy,
         string _cityName,
-        uint256 _latitude,
-        uint256 _longitude
+        int _latitude,
+        int _longitude
     );
     event EnergyTransfer(address indexed _from, uint256 _cityId);
     event LocationVerified(
@@ -100,8 +99,8 @@ contract BrightForest is ERC1155 {
         string _name,
         uint256 _cityId,
         string _cityName,
-        uint256 _latitude,
-        uint256 _longitude
+        int _latitude,
+        int _longitude
     );
     event UserRegistered(
         address indexed _from,
@@ -214,8 +213,8 @@ contract BrightForest is ERC1155 {
         uint256[1] memory input,
         string memory _cityName,
         uint256 _cityId,
-        uint256 _latitude,
-        uint256 _longitude,
+        int _latitude,
+        int _longitude,
         bytes32 locationHash
     ) public isUserRegistered(msg.sender) {
         bool isVerified = Verifier(address(verifierAddress)).verifyProof(
@@ -242,8 +241,8 @@ contract BrightForest is ERC1155 {
     function addPunkCity(
         uint256 _placeType,
         string memory _cityName,
-        uint256 _latitude,
-        uint256 _longitude,
+        int _latitude,
+        int _longitude,
         string memory _ipfsuri
     ) public isOwner(msg.sender) {
         // updating the place struct
@@ -284,7 +283,7 @@ contract BrightForest is ERC1155 {
 
     function getUsers() public view returns (User[] memory) {
         User[] memory users = new User[](registeredUsers.length);
-        for (uint256 i = registeredUsers.length - 1; i >= 0; i--) {
+        for (uint256 i = 0; i < registeredUsers.length; ++i) {
             User storage userTemp = addressToUserDetail[registeredUsers[i]];
             users[i] = userTemp;
         }
