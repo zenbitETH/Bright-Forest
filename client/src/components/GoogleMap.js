@@ -8,7 +8,7 @@ import tripData from "../Data/trips.json"
 
 const containerStyle = {
     width: '100%',
-    height: '700px',
+    height: '100vh',
 
 };
 
@@ -20,7 +20,6 @@ const center = [
     {lat: 25.761681, lng: -80.191788},
     {lat: 25.98791, lng: -80.30057}
 ];
-
 const apiKey = process.env.REACT_APP_MAPS_API_KEY;
 
 function GoogleTest() {
@@ -96,6 +95,7 @@ function GoogleTest() {
     async function updateMap(map){
         map.panTo(await getCurrentLocation())
         setMap(map)
+        routeDetected(tripData)
     }
 
     async function calculateRoute() {
@@ -122,7 +122,6 @@ function GoogleTest() {
             destination: tripData[1].endLocation.address,
             travelMode: window.google.maps.TravelMode.BICYCLING
         })
-        console.log(results)
         setDirectionsResult(results);
         setDuration(results.routes[0].legs[0].duration.text)
         setDistance(results.routes[0].legs[0].distance.text)
@@ -171,15 +170,15 @@ function GoogleTest() {
                     className='text-black'
                 />
                 </Autocomplete>
-                <div className="flex gap-4 divide-x border-2">
-                    <button onClick={calculateRoute}>Submit</button>
+                {/* <div className="flex gap-4 divide-x border-2"> */}
+                    {/* <button onClick={calculateRoute}>Submit</button>
                     <button onClick={clearRoute}>Clear</button> 
                     <button onClick={timer.startTimer}>Start Trip</button>
-                    <button onClick={timer.clearTimer}>End Trip</button>
+                    <button onClick={timer.clearTimer}>End Trip</button> */}
                     {/* <button onClick={handleClick}>Page change</button> */}
-                    <h1>Distance: {distance}</h1>
-                    <h1>Duration: {duration}</h1> 
-                </div>
+                    {/* <h1>Distance: {distance}</h1>
+                    <h1>Duration: {duration}</h1>  */}
+                {/* </div> */}
         </div>
     ) : <></>
 }

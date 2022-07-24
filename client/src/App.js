@@ -19,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AvailableTrips />} />
+          <Route path="/home" element={<Home/>} />
           <Route path="/trip2" element={<TripTwo />} />
           <Route path="/trip3" element={<TripThree />} />
           <Route path="/trip4" element={<TripFour />} />
