@@ -118,8 +118,8 @@ function GoogleTest() {
     async function routeDetected(tripData) {
         const directionsService = new window.google.maps.DirectionsService();
         const results = await directionsService.route({
-            origin: tripData[1].startLocation.address,
-            destination: tripData[1].endLocation.address,
+            origin: tripData[0].startLocation.address,
+            destination: tripData[0].endLocation.address,
             travelMode: window.google.maps.TravelMode.BICYCLING
         })
         setDirectionsResult(results);
