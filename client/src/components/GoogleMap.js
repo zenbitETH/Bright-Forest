@@ -8,8 +8,7 @@ import tripData from "../Data/trips.json"
 
 const containerStyle = {
     width: '100%',
-    height: '100',
-    align: center
+    height: '700px',
 
 };
 
