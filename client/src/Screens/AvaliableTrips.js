@@ -49,11 +49,11 @@ function AvailableTrips() {
                         
                         <div class="font-bold bg-rider-500 text-ride-100 rounded-tl-lg xl:rounded-br-lg">
                             <div class="dataValue xl:text-xl"><div class="dataTitle xl:text-lg">Reward:</div>
-                            5⚡</div>                        
+                            1700⚡</div>                        
                         </div>                     
                     </div>
                     <div class="mx-20 mt-10 xl:my-auto">
-                        <div class="Button">Start trip</div>
+                        <div class="Button" onClick={() => window.location.assign("/trip")} >Start trip</div>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ function AvailableTrips() {
                         
                         <div class="font-bold bg-rider-500 text-ride-100 rounded-tl-lg xl:rounded-br-lg">
                             <div class="dataValue xl:text-xl"><div class="dataTitle xl:text-lg">Reward:</div>
-                            5⚡</div>                        
+                            3300⚡</div>                        
                         </div>                     
                     </div>
                     <div class="mx-20 mt-10 xl:my-auto">

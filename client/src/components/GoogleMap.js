@@ -42,7 +42,7 @@ function GoogleTest() {
     const destinationRef = useRef();
 
     // Poll location every 30 seconds.
-    setInterval(checkProximity(tripData), 30000);
+    // setInterval(checkProximity(tripData), 30000);
 
     useEffect(() =>{
         if(!marker){
