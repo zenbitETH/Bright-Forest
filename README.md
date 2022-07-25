@@ -24,7 +24,7 @@ Bright Forest uses ZKsnarks to prove that players' IRL location matches with the
 
 
 
-### Dev Environemnt
+### Dev Environment
 
 Working with Polygon Mumbai testnet contracts (further update to deploy your own contracts)
 
@@ -55,3 +55,12 @@ npm start
 ```
 
 5. 📱 Open http://localhost:3000 to see the app
+
+### Contracts
+
+#### Deployment address (Polygon Mumbai)
+``` 
+0xAb359104d87180B0d2506cBc6AC75BCba553dc3c
+```
+Verified code can found [here](https://mumbai.polygonscan.com/address/0xab359104d87180b0d2506cbc6ac75bcba553dc3c#code).
+To view decoded Inputs and contract calls use Decode Input Data button provided at the bottom of the transaction.
