@@ -6,7 +6,7 @@ function PastTrips() {
         <div class="pastGrid">
           <div class="pastHeader">
             <div className="col-span-5">
-              <span class="ml-1">18:30⠀</span>
+              <span class="ml-1">11:49⠀</span>
               <span>07/24/2022⠀</span>
               <span>@ Querétaro City</span>
             </div>
@@ -49,7 +49,7 @@ function PastTrips() {
             <div class="riderAddress">
               <span>Rider: 0xdA7773E91a396d592AD33146164dA6d7d2Fda9B6</span>
             </div>
-            <div class="riderReward">+5⚡</div>
+            <div class="riderReward">+1700⚡</div>
           </div>
         </div>
       </div>
