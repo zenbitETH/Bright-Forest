@@ -53,7 +53,7 @@ function AvailableTrips() {
                         </div>                     
                     </div>
                     <div class="mx-20 mt-10 xl:my-auto">
-                        <div class="Button" onClick={() => window.location.assign("/trip")} >Start trip</div>
+                    <a href="/Trip"><div class="Button" >Start trip</div></a>
                     </div>
                 </div>
             </div>
