@@ -59,8 +59,13 @@ npm start
 ### Contracts
 
 #### Deployment address (Polygon Mumbai)
+BrightForest:
 ``` 
 0xAb359104d87180B0d2506cBc6AC75BCba553dc3c
+```
+Verifier:
+``` 
+0x4C7F5fbBd452b004Db659C9379d483EF2A5e2427
 ```
 Verified code can found [here](https://mumbai.polygonscan.com/address/0xab359104d87180b0d2506cbc6ac75bcba553dc3c#code).
 To view decoded Inputs and contract calls use Decode Input Data button provided at the bottom of the transaction.
