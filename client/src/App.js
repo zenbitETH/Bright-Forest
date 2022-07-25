@@ -18,14 +18,14 @@ function App() {
       <Hud />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<TripOne />} />
+          <Route path="/" element={<AvailableTrips />} />
+          <Route path="/home" element={<Home/>} />
           <Route path="/trip2" element={<TripTwo />} />
           <Route path="/trip3" element={<TripThree />} />
           <Route path="/trip4" element={<TripFour />} />
-          <Route path="/availabletrips" element={<AvailableTrips />} />
           <Route path="/pasttrips" element={<PastTrips />} />
           <Route path="/maponly" element={<Map/>} />
-          <Route path="/leaerboard" element={<Leaderboard/>} />
+          <Route path="/leaderboard" element={<Leaderboard/>} />
           <Route path="/trip" element={<Trip/>} />
         </Routes>
       </BrowserRouter>

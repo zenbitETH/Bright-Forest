@@ -13,7 +13,7 @@ function TripStep2() {
     return (
     <div>-
         <div class="step2">
-            <div class="col-span-3 m-1">Now you are in: {timer.formatTimer()}</div>
+            <div class="col-span-3 m-1">Now you are in:</div>
             <div class="text-left col-span-2 text-2xl my-4 ml-5 ">
                 <div>Public Park</div>
                 <span> Santa Mónica</span>
