@@ -13,11 +13,11 @@ function TripStep3() {
 
             <div class="tripArrow ">↓</div>
             <div class="text-left col-span-3 text-2xl my-4 ml-5 ">
-                <span> UAQ</span>
-                <div>University</div>
+                <span>Delegación Felipe Carrillo Puerto</span>
+                <div>Goverment Hall</div>
                 <div class="text-lg">in Querétaro</div>
             </div>
-            <img alt="Origin 3d asset" class="stepIMG "src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/12-University.png"/>
+            <img alt="Origin 3d asset" class="stepIMG "src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/14-Goverment%20office.png"/>
         </div>
     </div>
     )

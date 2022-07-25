@@ -9,7 +9,6 @@ import Step4 from '../Components/TripStep4'
 function Trip() {
     return (
     <div className='font-bf text-center'>
-        <Hud/>
         <Map/>
         <Step4/>
     </div>

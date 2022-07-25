@@ -85,17 +85,14 @@ function Home() {
         <div class="text-6xl mt-20 mx-10 text-white font-black hover:animate-pulse">
           Built with:
         </div>
-        <div class="grid xl:grid-cols-5 gap-5 mt-20 text-white text-xl font-exo pb-96">
+        <div class="grid xl:grid-cols-4 gap-5 mt-20 text-white text-xl font-exo pb-96">
           <a href="" class="builtBG">1. React</a>
           <a href="" class="builtBG">2. SnarksJS</a>
           <a href="/" class="builtBG">3. Google API</a>
           <a href="" class="builtBG">4. IPFS</a>
-          <a href="" class="builtBG">5. Tableland</a>
-          <a href="" class="builtBG">6. The graph</a>
-          <a href="/" class="builtBG">7. POAP</a>
-          <a href="/" class="builtBG">8. Polygon</a>
-          <a href="/" class="builtBG">9. Tailwind</a>
-          <a href="/" class="builtBG">10. Punk Cities places</a>
+          <a href="/" class="builtBG">5. Polygon</a>
+          <a href="/" class="builtBG">6. Tailwind</a>
+          <a href="/" class="builtBG">7. Punk Cities places</a>
         </div>
         <div class="text-6xl mt-20 mx-10 text-white font-black hover:animate-pulse ">
           Future work:
@@ -134,7 +131,7 @@ function Home() {
             <div class="teamMB"><img src="https://avatars.githubusercontent.com/u/10591684?v=4" class="teamIMG"/>
             Chisom Ikejiani<div class="text-lg text-rider-500">Fullstack dev</div></div></a>
         </div>
-      
+        <div class="text-9xl py-96 mx-10 text-white font-black animate-pulse"> 🕹️Demo <br/>bf.zenbit.mx</div>
 
 
         </div>
