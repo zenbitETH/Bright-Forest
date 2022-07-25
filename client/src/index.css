@@ -72,9 +72,10 @@ code {
   rounded-bl-lg
   border-r
   hover:bg-rider-500
+  col-span-2
 }
 
-.hudPOAPs {
+.hudEnergy {
   @apply
   rounded-br-lg
   border-l
