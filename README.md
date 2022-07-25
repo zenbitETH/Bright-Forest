@@ -9,9 +9,9 @@ Bright Forest uses ZKsnarks to prove that players' IRL location matches with the
 
 ## Contracts
 
-[Brgiht Forest Contract](https://mumbai.polygonscan.com/address/0xAb359104d87180B0d2506cBc6AC75BCba553dc3c#code)  
+[Bright Forest Contract](https://mumbai.polygonscan.com/address/0xAb359104d87180B0d2506cBc6AC75BCba553dc3c#code)  
 
-### Built with:
+## Built with:
 
 -React 
 -SnarksJS  
@@ -20,8 +20,6 @@ Bright Forest uses ZKsnarks to prove that players' IRL location matches with the
 -Polygon  
 -Punk Cities Places  
 -Tailwind CSS  
-
-
 
 
 ### Dev Environemnt
