@@ -1,6 +1,6 @@
 # Bright-Forest
 
-Developed at [HackFS 2022](https://ethglobal.com/showcase/bright-forest-a6zdy)   
+Developed at [HackFS 2022](https://ethglobal.com/showcase/bright-forest-a6zdy)  
 
 ## About
 Bright forest is based on Dark Forest game dynamic to move game units between two places located by coordinates. In DF this works to move resources between planets, while BF will use it to move "Energy and Chips" between IRL places minted as NFTs on Punk Cities.
@@ -9,9 +9,9 @@ Bright Forest uses ZKsnarks to prove that players' IRL location matches with the
 
 ## Contracts
 
-[Bright Forest Contract](https://mumbai.polygonscan.com/address/0xAb359104d87180B0d2506cBc6AC75BCba553dc3c#code)  
 
-## Built with:
+
+### Built with:
 
 -React 
 -SnarksJS  
@@ -22,7 +22,9 @@ Bright Forest uses ZKsnarks to prove that players' IRL location matches with the
 -Tailwind CSS  
 
 
-### Dev Environemnt
+
+
+### Dev Environment
 
 Working with Polygon Mumbai testnet contracts (further update to deploy your own contracts)
 
@@ -53,3 +55,12 @@ npm start
 ```
 
 5. 📱 Open http://localhost:3000 to see the app
+
+### Contracts
+
+#### Deployment address (Polygon Mumbai)
+``` 
+0xAb359104d87180B0d2506cBc6AC75BCba553dc3c
+```
+Verified code can found [here](https://mumbai.polygonscan.com/address/0xab359104d87180b0d2506cbc6ac75bcba553dc3c#code).
+To view decoded Inputs and contract calls use Decode Input Data button provided at the bottom of the transaction.
