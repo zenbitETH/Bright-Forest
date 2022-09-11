@@ -1,4 +1,4 @@
-function PastTrips() {
+const PastTrips = () => {
   return (
     <div class="screenMargin">
       <div class="screenTitle">Past Trips</div>
@@ -55,5 +55,5 @@ function PastTrips() {
       </div>
     </div>
   );
-}
+};
 export default PastTrips;

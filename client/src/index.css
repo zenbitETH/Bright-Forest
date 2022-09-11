@@ -1,380 +1,275 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,400;0,500;0,700;1,100;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 .App {
-  @apply 
-  bg-ride-400
-  flex flex-col overflow-auto h-screen 
-  bg-gradient-to-b from-ride-400 to-ride-400
-  font-bf text-white
-  text-center
-  -mt-5 xl:mt-0
+  @apply bg-ride-400 flex flex-col overflow-auto h-screen bg-gradient-to-b from-ride-400 to-ride-400 font-bf text-white text-center -mt-5 xl: mt-0;
 }
 
-.topHud, .bottomHud { 
-  @apply 
-  xl:mx-96
-  fixed grid  items-center left-0 right-0
-  rounded-b-lg
-  text-white
-  text-sm
-  md:text-xl lg:text-2xl xl:text-2xl xl:grid-cols-3
-  border-none
-  z-10
+.topHud,
+.bottomHud {
+  @apply xl: mx-96 fixed grid items-center left-0 right-0 rounded-b-lg text-white text-sm md:text-xl lg:text-2xl xl:text-2xl xl:grid-cols-3 border-none z-10;
 }
 
 .topHud {
-  @apply
-  top-0
-  grid-cols-3
+  @apply top-0 grid-cols-3;
 }
 
 .bottomHud {
-  @apply
-  bottom-0
-  grid-cols-2
+  @apply bottom-0 grid-cols-2;
 }
 
-.hudRider, .hudEnergy, .hudPOAPs, .hudLeader, .hudTrips, .hudWallet {
-  @apply
-  p-2
-  bg-ride-100 hover:bg-ride-900
-  hover:text-ride-100 hover:font-bold
-  border-glass-800
-  cursor-pointer
-  
+.hudRider,
+.hudEnergy,
+.hudPOAPs,
+.hudLeader,
+.hudTrips,
+.hudWallet {
+  @apply p-2 bg-ride-100 hover: bg-ride-900 hover:text-ride-100 hover:font-bold border-glass-800 cursor-pointer;
 }
 
 .hudWallet {
-  @apply
-  col-span-3
-  rounded-b-lg
-  animate-pulse
-  hover:bg-rider-500
-  text-2xl
+  @apply col-span-3 rounded-b-lg animate-pulse hover: bg-rider-500 text-2xl;
 }
 
 .hudTrips {
-  @apply 
-  xl:rounded-tr-lg
+  @apply xl: rounded-tr-lg;
 }
 
 .hudRider {
-  @apply
-  rounded-bl-lg
-  border-r
-  hover:bg-rider-500
-  col-span-2
+  @apply rounded-bl-lg border-r hover: bg-rider-500 col-span-2;
 }
 
 .hudEnergy {
-  @apply
-  rounded-br-lg
-  border-l
+  @apply rounded-br-lg border-l;
 }
 
 .hudLeader {
-  @apply
-  hover:bg-rival-500
-  xl:rounded-tl-lg
+  @apply hover: bg-rival-500 xl:rounded-tl-lg;
 }
 
 .logos {
-  @apply
-  xl:w-1/2 mx-auto
+  @apply xl: w-1/2 mx-auto;
 }
 
-.logosBG, .logosBG2 {
-  @apply
-  col-span-2
-  hover:cursor-pointer hover:bg-glass-200
-  rounded-lg xl:text-3xl
+.logosBG,
+.logosBG2 {
+  @apply col-span-2 hover: cursor-pointer hover:bg-glass-200 rounded-lg xl:text-3xl;
 }
 
-.smallBG, .smallBG2, {
-  @apply
-  col-span-4 rounded-lg text-xl pt-10 xl:text-3xl 
-   hover:cursor-pointer py-10 
+.smallBG,
+.smallBG2 {
+  @apply col-span-4 rounded-lg text-xl pt-10 xl: text-3xl hover:cursor-pointer py-10;
 }
 
 .smallBG {
-  @apply hover:bg-glass-200
+  @apply hover: bg-glass-200;
 }
 
-
 .smallBG2 {
-  @apply hover:bg-glass-500
+  @apply hover: bg-glass-500;
 }
 
 .smallBG3 {
-  @apply hover:bg-glass-400
-  rounded-lg text-sm pt-10 xl:text-3xl 
-  hover:cursor-pointer py-10 
+  @apply hover: bg-glass-400 rounded-lg text-sm pt-10 xl:text-3xl hover:cursor-pointer py-10;
 }
 
 .bigIcon {
-  @apply 
-  text-8xl animate-pulse
-  pb-3
+  @apply text-8xl animate-pulse pb-3;
 }
 
-.bigBG, .bigBG2 {
-  @apply border-glass-700 rounded-lg grid grid-cols-4 gap-3 mb-10 xl:mx-96 bg-glass-800 pb-5 
+.bigBG,
+.bigBG2 {
+  @apply border-glass-700 rounded-lg grid grid-cols-4 gap-3 mb-10 xl: mx-96 bg-glass-800 pb-5;
 }
 
-.bigBG{
-  @apply
-  grid-cols-4
+.bigBG {
+  @apply grid-cols-4;
 }
 
 .bigBG2 {
-  @apply
-  grid-cols-3
+  @apply grid-cols-3;
 }
-.bgTitle, .bgTitle2, .bgTitle3 {
-  @apply text-3xl mt-5 col-span-4 text-ride-900
+
+.bgTitle,
+.bgTitle2,
+.bgTitle3 {
+  @apply text-3xl mt-5 col-span-4 text-ride-900;
 }
 
 .bgTitle {
-  @apply text-ride-900
+  @apply text-ride-900;
 }
 
 .bgTitle2 {
-  @apply text-ride-500
+  @apply text-ride-500;
 }
 
 .bgTitle3 {
-  @apply text-rider-500
+  @apply text-rider-500;
 }
 
 .builtBG {
-  @apply 
-  bg-glass-800 hover:bg-ride-100 hover:text-rider-500 rounded-lg p-5
+  @apply bg-glass-800 hover: bg-ride-100 hover:text-rider-500 rounded-lg p-5;
 }
 
 .teamIMG {
-  @apply
-  rounded-full h-32 w-32 mx-auto
+  @apply rounded-full h-32 w-32 mx-auto;
 }
 
-.screenTitle, .leaderTitle {
-  @apply 
-  text-2xl text-rider-500 font-bold
+.screenTitle,
+.leaderTitle {
+  @apply text-2xl text-rider-500 font-bold;
 }
 
 .screenTitle {
-  @apply
-  text-rider-500
+  @apply text-rider-500;
 }
 
 .leaderTitle {
-  @apply
-  text-rival-100
+  @apply text-rival-100;
 }
 
 .screenMargin {
-  @apply
-  mt-20 mb-20
-  xl:mx-96
-  xl:text-3xl
+  @apply mt-20 mb-20 xl: mx-96 xl:text-3xl;
 }
 
 .tripCard {
-  @apply 
-  xl:rounded-lg
-  grid
-  pb-5
-  bg-glass-800
+  @apply xl: rounded-lg grid pb-5 bg-glass-800;
 }
 
 .pastCard {
-  @apply
-  w-full text-sm  text-left text-white grid gap-3 pt-3
+  @apply w-full text-sm text-left text-white grid gap-3 pt-3;
 }
 
 .pastGrid {
-  @apply
-  grid gap-2 grid-cols-11 border-b border-glass-700 xl:text-lg rounded-lg bg-glass-800
+  @apply grid gap-2 grid-cols-11 border-b border-glass-700 xl: text-lg rounded-lg bg-glass-800;
 }
 
 .pastHeader {
-  @apply 
-  pl-2 col-span-11 bg-ride-100 text-ride-900  font-bold py-2 rounded-t-lg
-  xl:text-2xl grid grid-cols-6
+  @apply pl-2 col-span-11 bg-ride-100 text-ride-900 font-bold py-2 rounded-t-lg xl: text-2xl grid grid-cols-6;
 }
 
 .pastTime {
-  @apply
-  col-span-2 text-xl text-center xl:pt-20 pt-28 xl:text-4xl
+  @apply col-span-2 text-xl text-center xl: pt-20 pt-28 xl:text-4xl;
 }
 
 .pastPlace {
-  @apply
-  col-span-4 text-center pt-5 xl:h-56 xl:pb-10 xl:text-xl
+  @apply col-span-4 text-center pt-5 xl: h-56 xl:pb-10 xl:text-xl;
 }
 
 .placeAssets {
-  @apply 
-  grid grid-cols-2 text-center
+  @apply grid grid-cols-2 text-center;
 }
 
 .pastRider {
-  @apply
-  bg-rider-500 text-ride-100 grid grid-cols-11 col-span-11 rounded-b-lg text-xs font-bold xl:text-lg
+  @apply bg-rider-500 text-ride-100 grid grid-cols-11 col-span-11 rounded-b-lg text-xs font-bold xl: text-lg;
 }
 
 .riderAddress {
-  @apply pl-2 col-span-9 pt-5 xl:pt-3
+  @apply pl-2 col-span-9 pt-5 xl: pt-3;
 }
 
 .riderReward {
-  @apply
-  col-span-2 text-center py-3 bg-ride-900 rounded-br-lg font-bold text-xl
+  @apply col-span-2 text-center py-3 bg-ride-900 rounded-br-lg font-bold text-xl;
 }
 
 .tripData {
-  @apply
-  text-left
-  text-sm
-  grid
-  px-2
+  @apply text-left text-sm grid px-2;
 }
 
 .tripDetails {
-  @apply
-  grid 
-  grid-cols-2
-  bg-ride-900 rounded-lg
-  xl:mx-16
+  @apply grid grid-cols-2 bg-ride-900 rounded-lg xl: mx-16;
 }
 
-.tripFrom, .tripTo {
-  @apply
-  grid
-  xl:h-24 h-32
-  grid-cols-6
-  xl:ml-24 
+.tripFrom,
+.tripTo {
+  @apply grid xl: h-24 h-32 grid-cols-6 xl:ml-24;
 }
 
 .PCAsset {
-  @apply
-  col-span-2 h-3/5 xl:h-1/3 mx-auto;
+  @apply col-span-2 h-3/5 xl: h-1/3 mx-auto;
 }
 
 .PCAsset2 {
-  @apply
-  col-span-2 xl:h-2/3 mx-auto;
+  @apply col-span-2 xl: h-2/3 mx-auto;
 }
 
 .tripArrow {
-  @apply
-  text-center text-4xl animate-bounce col-span-4 grid 
-  xl:font-bold
+  @apply text-center text-4xl animate-bounce col-span-4 grid xl: font-bold;
 }
 
 .dataValue {
-  @apply
-  text-xl 
-  col-span-4
-  my-1
+  @apply text-xl col-span-4 my-1;
 }
 
 .dataTitle {
-  @apply
-  text-sm animate-pulse
-  xl:text-2xl  xl:font-bold
+  @apply text-sm animate-pulse xl: text-2xl xl:font-bold;
 }
 
 .tripFrom {
-  @apply
-  text-ride-900
+  @apply text-ride-900;
 }
 
 .tripTo {
-  @apply
-  text-rider-500
+  @apply text-rider-500;
 }
 
 .stepIMG {
-  @apply 
-  xl:w-1/2
+  @apply xl: w-1/2;
 }
 
-.step1, .step2, .step3, .step4 {
-  @apply
-   text-white  w-full fixed bottom-5 left-0 right-0 rounded-t-lg drop-shadow-2xl text-ride-100 grid xl:mx-auto xl:w-1/2
+.step1,
+.step2,
+.step3,
+.step4 {
+  @apply text-white w-full fixed bottom-5 left-0 right-0 rounded-t-lg drop-shadow-2xl text-ride-100 grid xl: mx-auto xl:w-1/2;
 }
 
 .step1 {
-  @apply
-  bg-ride-500
-  h-56
-  animate-pulse
-  grid-cols-3 
+  @apply bg-ride-500 h-56 animate-pulse grid-cols-3;
 }
 
 .step2 {
-  @apply
-  bg-ride-900 hover:bg-rider-500 hover:cursor-pointer
-  h-56
-  mb-5
-  animate-pulse
-  grid-cols-3 
+  @apply bg-ride-900 hover: bg-rider-500 hover:cursor-pointer h-56 mb-5 animate-pulse grid-cols-3;
 }
 
 .step3 {
-  @apply
-  bg-rider-500
-  h-96
-  mb-5
-  grid-cols-4 
+  @apply bg-rider-500 h-96 mb-5 grid-cols-4;
 }
 
 .step4 {
-  @apply
-  bg-rider-500 hover:bg-ride-100 hover:text-rider-500 hover:cursor-pointer
-  h-56
-  mb-5
-  animate-pulse
-  grid-cols-3 
+  @apply bg-rider-500 hover: bg-ride-100 hover:text-rider-500 hover:cursor-pointer h-56 mb-5 animate-pulse grid-cols-3;
 }
 
 .Button {
-  @apply
-  bg-glass-200 hover:bg-rider-500
-  cursor-pointer
-  text-white hover:text-ride-100
-  rounded-lg
-  text-2xl
-  py-3
+  @apply bg-glass-200 hover: bg-rider-500 cursor-pointer text-white hover:text-ride-100 rounded-lg text-2xl py-3;
 }
 
 .rivalCard {
-  @apply
-  rounded-lg
-  bg-glass-300
-  mt-3
+  @apply rounded-lg bg-glass-300 mt-3;
 }
 
 .rivalAddress {
-  @apply
-  bg-rival-500
-  text-ride-300
-  rounded-t-lg
-  py-2
-  
+  @apply bg-rival-500 text-ride-300 rounded-t-lg py-2;
 }
 
 .rivalStats {
-  @apply
-  grid grid-cols-4
-  my-2
+  @apply grid grid-cols-4 my-2;
 }
