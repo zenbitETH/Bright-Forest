@@ -1,36 +1,92 @@
-import {BrowserRouter , Routes, Route} from"react-router-dom";
-import Hud from './Components/Hud';
-import Home from "./Screens/Home";
-import AvailableTrips from './Screens/AvaliableTrips'
-import Trip from './Screens/Trip'
-import PastTrips from './Screens/PastTrips'
-import Leaderboard from "./Screens/Leaderboard";
-import TripOne from './Components/TripStep1'
-import TripTwo from './Components/TripStep2'
-import TripThree from './Components/TripStep3'
-import TripFour from './Components/TripStep4'
+import { Center, Flex, Heading } from "@chakra-ui/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Image } from "@chakra-ui/react";
+import Theme from "./Components/Theme";
 
 import Map from './Components/GoogleMap'
 
-function App() {
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation, Route, Routes, Navigate } from "react-router-dom";
+// import routes from "./routes";
+
+import { AnimatePresence } from "framer-motion";
+import Home from "./pages/Home";
+import AvailableTrips from "./pages/AvaliableTrips";
+import PastTrips from "./pages/PastTrips";
+import Leaderboard from "./pages/Leaderboard";
+import Trip from "./pages/Trip";
+import TripStep2 from "./Components/TripStep2";
+import TripStep3 from "./Components/TripStep3";
+import TripStep4 from "./Components/TripStep4";
+
+const App = () => {
+  // const mainContent = React.useRef(null);
+  // const location = useLocation();
+  // const [isActive, setIsActive] = React.useState(status);
+  // const [address, setAddress] = React.useState(account);
+  // const [isConnectingMetaMask, setIsConnectingMetaMask] = useState(false);
+  // const [walletConnector, setWalletConnector] = useState(connector);
+  // const [walletError, setWalletError] = useState(error);
+  // const [connectedChainId, setConnectedChainId] = useState(chainId);
+
+  // useEffect(() => {
+  //   document.documentElement.scrollTop = 0;
+  //   document.scrollingElement.scrollTop = 0;
+  //   mainContent.current.scrollTop = 0;
+  // }, [location]);
+
+  // useEffect(() => {
+  //   setAddress(account);
+  //   setIsActive(active);
+  //   setWalletConnector(connector);
+  //   setWalletError(error);
+  //   setConnectedChainId(chainId);
+  // }, [account, connector, error, chainId]);
+
+  // const getRoutes = (routes) => {
+  //   return routes.map((prop, key) => {
+  //     if (prop.layout === "/") {
+  //       return (
+  //         <Route
+  //           path={prop.layout + prop.path}
+  //           component={prop.component}
+  //           key={key}
+  //         />
+  //       );
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  // };
+
   return (
-    <div class="App">
-      <Hud />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AvailableTrips />} />
-          <Route path="/home" element={<Home/>} />
-          <Route path="/trip2" element={<TripTwo />} />
-          <Route path="/trip3" element={<TripThree />} />
-          <Route path="/trip4" element={<TripFour />} />
-          <Route path="/pasttrips" element={<PastTrips />} />
-          <Route path="/maponly" element={<Map/>} />
-          <Route path="/leaderboard" element={<Leaderboard/>} />
-          <Route path="/trip" element={<Trip/>} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <AnimatePresence exitBeforeEnter>
+        <div className="App">
+          <Flex justifyContent="flex-end" m={4}>
+            <Theme />
+            <ConnectButton />
+          </Flex>
+          <Routes>
+            <Route path="/" element={<AvailableTrips />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/trip2" element={<TripStep2 />} />
+            <Route path="/trip3" element={<TripStep3 />} />
+            <Route path="/trip4" element={<TripStep4 />} />
+            <Route path="/pasttrips" element={<PastTrips />} />
+            <Route path="/maponly" element={<Map />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/trip" element={<Trip />} />
+            {/* <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} /> */}
+          </Routes>
+          {/* <Center>
+            <Heading>Bright Forest</Heading>
+          </Center> */}
+        </div>
+      </AnimatePresence>
+    </>
   );
-}
+};
 
 export default App;

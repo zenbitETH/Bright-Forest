@@ -1,6 +1,6 @@
 import Map from './GoogleMap'
 
-function TripStep1() {
+const TripStep1 = () => {
     return (
         <div>
             <Map />

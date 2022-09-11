@@ -1,5 +1,5 @@
 
-function TripStep3() {
+const TripStep3 = () => {
     return (
     <div>
         <div class="step3">

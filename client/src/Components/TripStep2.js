@@ -1,7 +1,7 @@
 import Map from './GoogleMap';
 import * as timer from "../Scripts/timer";
 
-function TripStep2() {
+const TripStep2 = () => {
     
     function startTrip() {
         timer.startTimer();
