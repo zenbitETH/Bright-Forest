@@ -18,6 +18,8 @@ import Trip from "./pages/Trip";
 import TripStep2 from "./Components/TripStep2";
 import TripStep3 from "./Components/TripStep3";
 import TripStep4 from "./Components/TripStep4";
+import About from "./pages/About";
+import "./App.css"
 
 const App = () => {
   // const mainContent = React.useRef(null);
@@ -43,22 +45,6 @@ const App = () => {
   //   setConnectedChainId(chainId);
   // }, [account, connector, error, chainId]);
 
-  // const getRoutes = (routes) => {
-  //   return routes.map((prop, key) => {
-  //     if (prop.layout === "/") {
-  //       return (
-  //         <Route
-  //           path={prop.layout + prop.path}
-  //           component={prop.component}
-  //           key={key}
-  //         />
-  //       );
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-  // };
-
   return (
     <>
       <AnimatePresence exitBeforeEnter>
@@ -77,9 +63,8 @@ const App = () => {
             <Route path="/maponly" element={<Map />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/trip" element={<Trip />} />
-            {/* <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} /> */}
-          </Routes>
+            <Route path="/about" element={<About />} />
+            </Routes>
           {/* <Center>
             <Heading>Bright Forest</Heading>
           </Center> */}

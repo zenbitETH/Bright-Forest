@@ -7,13 +7,12 @@ import { configureChains, createClient, WagmiConfig, chain } from "wagmi";
 import { polygonTestnet } from "./utils/constants";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { publicProvider } from "wagmi/providers/public";
+import "./index.css";
 
 import App from "./App";
 // Rainbow kit styles
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultProvider } from "ethers";
-
-console.log(chain);
 
 const { chains } = configureChains(
   [polygonTestnet, chain.polygonMumbai],
