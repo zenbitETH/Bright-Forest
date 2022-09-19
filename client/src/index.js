@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Router, Routes } from "react-router-dom
 import { ChakraProvider } from "@chakra-ui/react";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig, chain } from "wagmi";
-import { polygonTestnet } from "./utils/constants";
+import { polygonTestnet } from "./Utils/constants";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { publicProvider } from "wagmi/providers/public";
 import "./index.css";

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {useRef, useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
+import {useRef, useState, useEffect} from 'react';
 import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer} from '@react-google-maps/api';
 import * as timer from "../Scripts/timer";
 import {calcArea} from "../Scripts/zone";
@@ -8,7 +8,7 @@ import tripData from "../Data/trips.json"
 
 const containerStyle = {
     width: '100%',
-    height: '100vh',
+    height: '50vh',
 
 };
 
@@ -23,6 +23,7 @@ const center = [
 const apiKey = process.env.REACT_APP_MAPS_API_KEY;
 
 function GoogleTest() {
+
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: apiKey,
@@ -34,6 +35,8 @@ function GoogleTest() {
     const [distance, setDistance] = useState('');
     const [location, setLocation] = useState(null);
     const [marker, setMarker] = useState(null);
+    const [crd, setCrd] =  useState(null);
+    const [pressed, setPress] = useState('Press');
 
     const navigate = useNavigate()
 
@@ -54,7 +57,31 @@ function GoogleTest() {
         return <h1>Loading the map!</h1>
     }
 
-    
+    async function checkLocation() {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+          };
+        
+        function success(pos) {
+            const crd = pos.coords;
+            const crd_text = `${crd.latitude}, ${crd.longitude}, ${crd.accuracy}`;
+            // console.log('Your current position is:');
+            // console.log(`Latitude : ${crd.latitude}`);
+            // console.log(`Longitude: ${crd.longitude}`);
+            // console.log(`More or less ${crd.accuracy} meters.`);
+            
+            setPress("Pressed");
+            setCrd(crd_text);
+          }
+        
+          function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+          }
+        
+        window.navigator.geolocation.getCurrentPosition(success, error, options);
+    }
 
     async function checkProximity(tripData) {
         const coord = await getCurrentLocation();
@@ -179,6 +206,10 @@ function GoogleTest() {
                     {/* <h1>Distance: {distance}</h1>
                     <h1>Duration: {duration}</h1>  */}
                 {/* </div> */}
+                <div className="text-white flex flex-col">
+                    <button className="cursor-pointer" onClick={checkLocation}>{pressed}</button>
+                    {crd}
+                </div>
         </div>
     ) : <></>
 }
