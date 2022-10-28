@@ -4,6 +4,7 @@ import { Image } from "@chakra-ui/react";
 import Theme from "./Components/Theme";
 
 import Map from './Components/GoogleMap'
+import Map2 from './Components/GoogleMapNew'
 
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, Route, Routes, Navigate } from "react-router-dom";
@@ -60,7 +61,7 @@ const App = () => {
             <Route path="/trip3" element={<TripStep3 />} />
             <Route path="/trip4" element={<TripStep4 />} />
             <Route path="/pasttrips" element={<PastTrips />} />
-            <Route path="/maponly" element={<Map />} />
+            <Route path="/maponly" element={<Map2 />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/trip" element={<Trip />} />
             <Route path="/about" element={<About />} />

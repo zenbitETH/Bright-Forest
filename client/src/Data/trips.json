@@ -18,18 +18,7 @@
         },
         "endLocation":{
             "address":"Educational Cultural Center of the State of Querétaro, Av. Constituyentes S/N, Villas del Sur, 76000 Santiago de Querétaro, Qro., Mexico",
-            "coordinates":{"lat":"20.586064267648446","lng":-100.3864358174527}
-        }
-    },
-    {
-        "id":2,
-        "startLocation":{
-            "address":"",
-            "coordinates":{"lat":"","lng":""}   
-        },
-        "endLocation":{
-            "address":"",
-            "coordinates":{"lat":"","lng":""}   
+            "coordinates":{"lat":20.586064267648446,"lng":-100.3864358174527}
         }
     }
 ]
