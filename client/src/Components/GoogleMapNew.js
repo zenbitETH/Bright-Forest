@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useRef, useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
-import {GoogleMap, MarkerF, Polyline} from '@react-google-maps/api';
+import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api';
 import * as timer from "../Scripts/timer";
 import {calcArea} from "../Scripts/zone";
 import tripData from "../Data/trips.json"
@@ -9,14 +9,16 @@ import bflogo from '../Assets/BFlogo.svg'
 
 export default function GoogleMap2 (){
     const center = {lat:20.59400978585176,lng:-100.40928572380896}
-    const destinations = [{lat: 25.761681, lng: -80.191788},
-        {lat: 25.98791, lng: -80.30057}]
     const containerStyle = {
         width: '100%',
         height: '100vh',
     
     };
+
     const [sites, setSites] = useState([]);
+    const [destination, setDestination] = useState(null);
+    const [origin, setOrigin] = useState(null);
+    const [trip, setTrip] = useState(null);
 
     const poiMarkers = () => {
         const validSites = tripData.filter((item) => (item.startLocation?.coordinates !== undefined))
@@ -24,29 +26,26 @@ export default function GoogleMap2 (){
     }
 
     const startTrip = async (location) => {
-
+        setDestination(location.endLocation.coordinates)
+        setOrigin(location.startLocation.coordinates)
     }
     
-    const options = {
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
-        clickable: false,
-        draggable: false,
-        editable: false,
-        visible: true,
-        radius: 30000,
-        paths: [
-          {lat: 37.772, lng: -122.214},
-          {lat: 21.291, lng: -157.821},
-          {lat: -18.142, lng: 178.431},
-          {lat: -27.467, lng: 153.027}
-        ],
-        zIndex: 1
-      };
-
+    const handleTrip = async(response) => {
+        if (response !== null) {
+            if (response.status === 'OK') {
+                setTrip(() => (response))
+            } else {
+                 console.log('response', response)
+            }
+        }
+        clearStates();
+    }
+    const clearStates = async () => {
+        console.log(trip)
+        setDestination(null);
+        setOrigin(null);
+    }
+   
     useEffect(() => {
         poiMarkers()
     }, [])
@@ -61,8 +60,9 @@ export default function GoogleMap2 (){
                 disableDefaultUI:true
             }}
         >
-            {sites.map((location) =>(
+            {sites.map((location, index) =>(
                 <MarkerF
+                key={index}
                 onClick={() => {startTrip(location)}}
                 icon ={{
                     url:bflogo,
@@ -72,10 +72,27 @@ export default function GoogleMap2 (){
                     },
                 }}
                 position={location.startLocation.coordinates}
-                
                 />
-            ))}
-            <Polyline options={options}/>
+                ))}
+                
+            {(origin && destination) &&
+            <DirectionsService
+                options={{
+                    destination: destination,
+                    origin: origin,
+                    travelMode: window.google.maps.TravelMode.BICYCLING
+                }}
+                callback={handleTrip}
+            />}
+            { trip && 
+            <DirectionsRenderer 
+                directions={trip} 
+                options={{
+                    suppressBicyclingLayer:true,
+                    suppressMarkers:true
+                }}
+                
+                />}
         </GoogleMap>
     </>
     );
