@@ -17,8 +17,10 @@ export default function GoogleMap2 (){
 
     const [sites, setSites] = useState([]);
     const [destination, setDestination] = useState(null);
+    const [preciseDestination, setPreciseDestination] = useState(null);
     const [origin, setOrigin] = useState(null);
     const [trip, setTrip] = useState(null);
+    const [markers, setMarkers] = useState([]);
 
     const poiMarkers = () => {
         const validSites = tripData.filter((item) => (item.startLocation?.coordinates !== undefined))
@@ -29,21 +31,25 @@ export default function GoogleMap2 (){
         setDestination(location.endLocation.coordinates)
         setOrigin(location.startLocation.coordinates)
     }
+
+    // const endTrip = () => {
+
+    // }
     
-    const handleTrip = async(response) => {
+    const handleTrip = async (response) => {
         if (response !== null) {
             if (response.status === 'OK') {
                 setTrip(() => (response))
+                setPreciseDestination({lat:response.routes[0].legs[0].end_location.lat(), lng:response.routes[0].legs[0].end_location.lng()})
             } else {
                  console.log('response', response)
             }
         }
-        clearStates();
+        clearStates()
     }
     const clearStates = async () => {
-        console.log(trip)
-        setDestination(null);
         setOrigin(null);
+        setDestination(null)
     }
    
     useEffect(() => {
@@ -85,14 +91,27 @@ export default function GoogleMap2 (){
                 callback={handleTrip}
             />}
             { trip && 
-            <DirectionsRenderer 
-                directions={trip} 
-                options={{
-                    suppressBicyclingLayer:true,
-                    suppressMarkers:true
-                }}
-                
-                />}
+            <>
+                <DirectionsRenderer 
+                    directions={trip} 
+                    options={{
+                        suppressBicyclingLayer:true,
+                        suppressMarkers:true
+                    }}
+                    
+                    />
+                <MarkerF 
+                    position={preciseDestination}
+                    icon ={{
+                        url:bflogo,
+                        scaledSize:{
+                            width:50,
+                            height:50
+                        }
+                    }}   
+                />
+            </>
+                }
         </GoogleMap>
     </>
     );
