@@ -1,10 +1,10 @@
-import axios from 'axios';
 import {useRef, useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
-import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api';
+import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer, MarkerClusterer} from '@react-google-maps/api';
 import * as timer from "../Scripts/timer";
 import {calcArea} from "../Scripts/zone";
-import tripData from "../Data/trips.json"
+import tripData from '../Data/trips.json'
+import mapStyle from '../Data/mapStyle.json'
 import bflogo from '../Assets/BFlogo.svg'
 
 export default function GoogleMap2 (){
@@ -17,10 +17,11 @@ export default function GoogleMap2 (){
 
     const [sites, setSites] = useState([]);
     const [destination, setDestination] = useState(null);
-    const [preciseDestination, setPreciseDestination] = useState(null);
     const [origin, setOrigin] = useState(null);
+    const [preciseDestination, setPreciseDestination] = useState(null);
+    const [preciseOrigin, setPreciseOrigin] = useState(null);
     const [trip, setTrip] = useState(null);
-    const [markers, setMarkers] = useState([]);
+    const markers = [];
 
     const poiMarkers = () => {
         const validSites = tripData.filter((item) => (item.startLocation?.coordinates !== undefined))
@@ -28,26 +29,39 @@ export default function GoogleMap2 (){
     }
 
     const startTrip = async (location) => {
+        endTrip()
+        clearMarkers(markers)
         setDestination(location.endLocation.coordinates)
         setOrigin(location.startLocation.coordinates)
     }
 
-    // const endTrip = () => {
-
-    // }
+    const endTrip = () => {
+        setTrip(null)
+        setPreciseDestination(null)
+        setPreciseOrigin(null)
+        clearCoordinates()
+    }
     
-    const handleTrip = async (response) => {
+    const handleTrip = (response) => {
         if (response !== null) {
             if (response.status === 'OK') {
                 setTrip(() => (response))
                 setPreciseDestination({lat:response.routes[0].legs[0].end_location.lat(), lng:response.routes[0].legs[0].end_location.lng()})
+                setPreciseOrigin({lat:response.routes[0].legs[0].start_location.lat(), lng:response.routes[0].legs[0].start_location.lng()})
             } else {
                  console.log('response', response)
             }
         }
-        clearStates()
+        clearCoordinates()
     }
-    const clearStates = async () => {
+   
+    const clearMarkers = (markers) => {
+        markers.forEach((marker) =>{
+            marker.setMap(null);
+        })
+        markers = []
+    }
+    const clearCoordinates = async () => {
         setOrigin(null);
         setDestination(null)
     }
@@ -61,8 +75,9 @@ export default function GoogleMap2 (){
         <GoogleMap 
             mapContainerStyle={containerStyle}
             center={center}
-            zoom={15}
+            zoom={12}
             options={{
+                styles:mapStyle,
                 disableDefaultUI:true
             }}
         >
@@ -70,6 +85,7 @@ export default function GoogleMap2 (){
                 <MarkerF
                 key={index}
                 onClick={() => {startTrip(location)}}
+                onLoad={(marker) => {markers.push(marker)}}
                 icon ={{
                     url:bflogo,
                     scaledSize:{
@@ -89,6 +105,7 @@ export default function GoogleMap2 (){
                     travelMode: window.google.maps.TravelMode.BICYCLING
                 }}
                 callback={handleTrip}
+                
             />}
             { trip && 
             <>
@@ -100,6 +117,16 @@ export default function GoogleMap2 (){
                     }}
                     
                     />
+                <MarkerF 
+                    position={preciseOrigin}
+                    icon ={{
+                        url:bflogo,
+                        scaledSize:{
+                            width:50,
+                            height:50
+                        }
+                    }}   
+                />
                 <MarkerF 
                     position={preciseDestination}
                     icon ={{
