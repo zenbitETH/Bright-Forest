@@ -25,11 +25,15 @@ export default function Location() {
     }
     
     const getLocation = () => {
-        navigator.geolocation.getCurrentPosition(success, err)
+        navigator.geolocation.getCurrentPosition(success, err, options)
     }
 
     useEffect(()=>{
-        getLocation()
+        const id = setInterval(getLocation, 5000);
+
+        return () => {
+            clearInterval(id)
+        }
     },[])
     return (
         <>
