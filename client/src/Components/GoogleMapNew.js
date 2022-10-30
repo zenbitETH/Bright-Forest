@@ -1,13 +1,12 @@
 import * as timer from "../Scripts/timer";
 import {calcArea} from "../Scripts/zone";
 import bflogo from '../Assets/BFlogo.svg'
-import locationMarker from '../Assets/locationMarker.png'
 import tripData from '../Data/trips.json'
 import mapStyle from '../Data/mapStyle.json'
 import Location from './Location'
-import { useNavigate } from "react-router-dom";
-import {useRef, useState, useEffect} from 'react';
-import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api';
+import { useNavigate } from "react-router-dom"
+import {useRef, useState, useEffect} from 'react'
+import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api'
 
 export default function GoogleMap2 (){
     const center = {lat:20.59400978585176,lng:-100.40928572380896}
@@ -23,6 +22,7 @@ export default function GoogleMap2 (){
     const [preciseDestination, setPreciseDestination] = useState(null);
     const [preciseOrigin, setPreciseOrigin] = useState(null);
     const [trip, setTrip] = useState(null);
+    const [location, setLocation] = useState(null);
     const markers = [];
 
     const poiMarkers = () => {
@@ -74,7 +74,6 @@ export default function GoogleMap2 (){
     
     return (
     <>
-        <Location />
         <GoogleMap 
             mapContainerStyle={containerStyle}
             center={center}
@@ -84,18 +83,7 @@ export default function GoogleMap2 (){
                 disableDefaultUI:true
             }}
         >
-            <MarkerF 
-                position={center}
-                zIndex={100}
-                icon={{
-                    url:locationMarker,
-                    scaledSize:{
-                        width:20,
-                        height:20
-                    }
-                }}
-                
-            />
+            <Location />
             {sites.map((location, index) =>(
                 <MarkerF
                 key={index}
