@@ -1,186 +1,148 @@
-import axios from 'axios';
-import {useRef, useState, useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
-import { useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer} from '@react-google-maps/api';
 import * as timer from "../Scripts/timer";
 import {calcArea} from "../Scripts/zone";
-import tripData from "../Data/trips.json"
+import bflogo from '../Assets/BFlogo.svg'
+import tripData from '../Data/trips.json'
+import mapStyle from '../Data/mapStyle.json'
+import Location from './Location'
+import { useNavigate } from "react-router-dom"
+import {useRef, useState, useEffect} from 'react'
+import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api'
 
-const containerStyle = {
-    width: '100%',
-    height: '100vh',
+export default function GoogleMap2 (){
+    const center = {lat:20.59400978585176,lng:-100.40928572380896}
+    const containerStyle = {
+        width: '100%',
+        height: '100vh',
+    
+    };
 
-};
-
-
-
-const lib = ['geometry', 'places','drawing'];
-
-const center = [
-    {lat: 25.761681, lng: -80.191788},
-    {lat: 25.98791, lng: -80.30057}
-];
-const apiKey = process.env.REACT_APP_MAPS_API_KEY;
-
-function GoogleTest() {
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: apiKey,
-        libraries: lib
-    })
-    const [map, setMap] = useState(null);
-    const [directionsResult, setDirectionsResult] = useState(null);
-    const [duration, setDuration] = useState('');
-    const [distance, setDistance] = useState('');
+    const [sites, setSites] = useState([]);
+    const [destination, setDestination] = useState(null);
+    const [origin, setOrigin] = useState(null);
+    const [preciseDestination, setPreciseDestination] = useState(null);
+    const [preciseOrigin, setPreciseOrigin] = useState(null);
+    const [trip, setTrip] = useState(null);
     const [location, setLocation] = useState(null);
-    const [marker, setMarker] = useState(null);
+    const markers = [];
 
-    const navigate = useNavigate()
-
-    const originRef = useRef();
-    const destinationRef = useRef();
-
-    // Poll location every 30 seconds.
-    // setInterval(checkProximity(tripData), 30000);
-
-    useEffect(() =>{
-        if(!marker){
-            return
-        }
-        updateMarker(marker)
-    }, [location])
-
-    if (!isLoaded) {
-        return <h1>Loading the map!</h1>
+    const poiMarkers = () => {
+        const validSites = tripData.filter((item) => (item.startLocation?.coordinates !== undefined))
+        setSites(validSites)
     }
 
+    const startTrip = async (location) => {
+        endTrip()
+        clearMarkers(markers)
+        setDestination(location.endLocation.coordinates)
+        setOrigin(location.startLocation.coordinates)
+    }
+
+    const endTrip = () => {
+        setTrip(null)
+        setPreciseDestination(null)
+        setPreciseOrigin(null)
+        clearCoordinates()
+    }
     
-
-    async function checkProximity(tripData) {
-        const coord = await getCurrentLocation();
-        setLocation(coord);
-        const tripC = tripData[0].startLocation.coordinates
-        const area = calcArea(tripC.lat, tripC.long, 2) // latitude, longitude, and distance in km.
-
-        const result = area.inArea(coord.lat, coord.long)
-        if(result){
-            routeDetected(tripData)
-            navigate("/trip2")
+    const handleTrip = (response) => {
+        if (response !== null) {
+            if (response.status === 'OK') {
+                setTrip(() => (response))
+                setPreciseDestination({lat:response.routes[0].legs[0].end_location.lat(), lng:response.routes[0].legs[0].end_location.lng()})
+                setPreciseOrigin({lat:response.routes[0].legs[0].start_location.lat(), lng:response.routes[0].legs[0].start_location.lng()})
+            } else {
+                 console.log('response', response)
+            }
         }
+        clearCoordinates()
     }
-    async function getCurrentLocation() {
-        const request = {
-            "homeMobileCountryCode": 310,
-            "homeMobileNetworkCode": 410,
-            "radioType": "gsm",
-            "carrier": "Vodafone",
-            "considerIp": true,
-            "cellTowers": [
-              // See the Cell Tower Objects section below.
-            ],
-            "wifiAccessPoints": [
-              // See the WiFi Access Point Objects section below.
-            ]
-          }
-        const apiUrl = `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
-        const response = await axios.post(apiUrl)
-        return response.data.location
-    }
-
-    async function updateMarker(marker){
-        marker.setPosition(await getCurrentLocation())
-        setMarker(marker);
-    }
-
-    async function updateMap(map){
-        map.panTo(await getCurrentLocation())
-        setMap(map)
-        routeDetected(tripData)
-    }
-
-    async function calculateRoute() {
-    
-        if (originRef.current.value === '' || destinationRef.current.value === '') {
-            return
-        }
-        const directionsService = new window.google.maps.DirectionsService();
-        const results = await directionsService.route({
-            origin: originRef.current.value,
-            destination: destinationRef.current.value,
-            travelMode: window.google.maps.TravelMode.BICYCLING
+   
+    const clearMarkers = (markers) => {
+        markers.forEach((marker) =>{
+            marker.setMap(null);
         })
-        console.log(results)
-        setDirectionsResult(results);
-        setDuration(results.routes[0].legs[0].duration.text)
-        setDistance(results.routes[0].legs[0].distance.text)
+        markers = []
     }
-
-    async function routeDetected(tripData) {
-        const directionsService = new window.google.maps.DirectionsService();
-        const results = await directionsService.route({
-            origin: tripData[0].startLocation.address,
-            destination: tripData[0].endLocation.address,
-            travelMode: window.google.maps.TravelMode.BICYCLING
-        })
-        setDirectionsResult(results);
-        setDuration(results.routes[0].legs[0].duration.text)
-        setDistance(results.routes[0].legs[0].distance.text)
+    const clearCoordinates = async () => {
+        setOrigin(null);
+        setDestination(null)
     }
+   
+    useEffect(() => {
+        poiMarkers()
+    }, [])
     
-    function clearRoute() {
-        setDirectionsResult(null)
-        setDuration('')
-        setDistance('')
-        originRef.current.value = ''
-        destinationRef.current.value = ''
-
-
-    }
-    
-    return isLoaded ? (
-        <div className="flex flex-col justify-center items-center">
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center[1]}
-                zoom={10}
-                onLoad={updateMap}
-            >
-            <Marker
-                icon={{
-                    path: window.google.maps.SymbolPath.CIRCLE,
-                    scale: 4,
+    return (
+    <>
+        <GoogleMap 
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={12}
+            options={{
+                styles:mapStyle,
+                disableDefaultUI:true
+            }}
+        >
+            <Location />
+            {sites.map((location, index) =>(
+                <MarkerF
+                key={index}
+                onClick={() => {startTrip(location)}}
+                onLoad={(marker) => {markers.push(marker)}}
+                icon ={{
+                    url:bflogo,
+                    scaledSize:{
+                        width:50,
+                        height:50
+                    },
                 }}
-                // position={center[0]}
-                onLoad={updateMarker}
+                position={location.startLocation.coordinates}
                 />
-                {directionsResult && (<DirectionsRenderer directions={directionsResult} />)}
-            </GoogleMap>
-                <Autocomplete>
-                <input 
-                    type='text' 
-                    placeholder='Origin' 
-                    ref={originRef}
-                    className='text-black' />
-                </Autocomplete>
-                <Autocomplete>
-                <input
-                    type='text'
-                    placeholder='Destination'
-                    ref={destinationRef}
-                    className='text-black'
+                ))}
+                
+            {(origin && destination) &&
+            <DirectionsService
+                options={{
+                    destination: destination,
+                    origin: origin,
+                    travelMode: window.google.maps.TravelMode.BICYCLING
+                }}
+                callback={handleTrip}
+                
+            />}
+            { trip && 
+            <>
+                <DirectionsRenderer 
+                    directions={trip} 
+                    options={{
+                        suppressBicyclingLayer:true,
+                        suppressMarkers:true
+                    }}
+                    
+                    />
+                <MarkerF 
+                    position={preciseOrigin}
+                    icon ={{
+                        url:bflogo,
+                        scaledSize:{
+                            width:50,
+                            height:50
+                        }
+                    }}   
                 />
-                </Autocomplete>
-                {/* <div className="flex gap-4 divide-x border-2"> */}
-                    {/* <button onClick={calculateRoute}>Submit</button>
-                    <button onClick={clearRoute}>Clear</button> 
-                    <button onClick={timer.startTimer}>Start Trip</button>
-                    <button onClick={timer.clearTimer}>End Trip</button> */}
-                    {/* <button onClick={handleClick}>Page change</button> */}
-                    {/* <h1>Distance: {distance}</h1>
-                    <h1>Duration: {duration}</h1>  */}
-                {/* </div> */}
-        </div>
-    ) : <></>
+                <MarkerF 
+                    position={preciseDestination}
+                    icon ={{
+                        url:bflogo,
+                        scaledSize:{
+                            width:50,
+                            height:50
+                        }
+                    }}   
+                />
+            </>
+                }
+        </GoogleMap>
+    </>
+    );
 }
-
-export default GoogleTest;
