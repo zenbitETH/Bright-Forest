@@ -8,7 +8,24 @@
         "endLocation":{
             "address":"Delegación Municipal Felipe Carrillo Puerto, Guadalupe Victoria 103, Felipe Carrillo Puerto, 76138 Santiago de Querétaro, Qro., Mexico",
             "coordinates":{"lat":20.60587664748295,"lng":-100.42830757934648}
+        },
+        "details":{
+            "from":{
+                "name": "Santa Mónica",
+                "typeOfPlace": "Public Park",
+                "points": 10
+            },
+            "to":{
+                "name": "Delegación FCP",
+                "typeOfPlace": "Goverment Office",
+                "points": 10
+            },
+            "distance": "1.7km",
+            "city": "Querétaro",
+            "record": "00:05:15",
+            "reward": 1700
         }
+
     },
     {
         "id":1,
@@ -19,6 +36,22 @@
         "endLocation":{
             "address":"Educational Cultural Center of the State of Querétaro, Av. Constituyentes S/N, Villas del Sur, 76000 Santiago de Querétaro, Qro., Mexico",
             "coordinates":{"lat":20.586064267648446,"lng":-100.3864358174527}
+        },
+        "details":{
+            "from":{
+                "name": "Cerro de las Campanas",
+                "typeOfPlace": "University",
+                "points": 10
+            },
+            "to":{
+                "name": "Educational Cultural Center",
+                "typeOfPlace": "University",
+                "points": 10
+            },
+            "distance": "3.6km",
+            "city": "Querétaro",
+            "record": "00:11:23",
+            "reward": 2200
         }
     }
 ]
