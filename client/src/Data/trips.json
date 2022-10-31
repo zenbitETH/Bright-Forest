@@ -13,11 +13,13 @@
             "from":{
                 "name": "Santa Mónica",
                 "typeOfPlace": "Public Park",
+                "img":"https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png",
                 "points": 10
             },
             "to":{
                 "name": "Delegación FCP",
                 "typeOfPlace": "Goverment Office",
+                "img":"https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/14-Goverment%20office.png",
                 "points": 10
             },
             "distance": "1.7km",
@@ -41,11 +43,13 @@
             "from":{
                 "name": "Cerro de las Campanas",
                 "typeOfPlace": "University",
+                "img":"https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png",
                 "points": 10
             },
             "to":{
                 "name": "Educational Cultural Center",
                 "typeOfPlace": "University",
+                "img":"https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/14-Goverment%20office.png",
                 "points": 10
             },
             "distance": "3.6km",
