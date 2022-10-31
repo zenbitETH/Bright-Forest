@@ -1,5 +1,5 @@
 
-const TripStep3 = () => {
+const ActiveTrip = () => {
     return (
     <div>
         <div class="step3">
@@ -22,4 +22,4 @@ const TripStep3 = () => {
     </div>
     )
 }
-export default TripStep3;
+export default ActiveTrip;

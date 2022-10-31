@@ -1,8 +1,9 @@
 
-const TripStep4 = () => {
+
+const EndTrip = ({ }) => {
     return (
     <div>
-        <div class="step4">
+        <div class="endTrip">
             <div class="col-span-3 m-1">Now you are in:</div>
             <div class="text-left col-span-2 text-2xl my-4 ml-5 ">
                 <div>Delegación Felipe Carrillo Puerto</div>
@@ -15,4 +16,4 @@ const TripStep4 = () => {
     </div>
     )
 }
-export default TripStep4;
+export default EndTrip;
