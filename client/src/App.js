@@ -62,7 +62,7 @@ const App = () => {
             <Route path="/pasttrips" element={<PastTrips />} />
             <Route path="/maponly" element={<Map />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/trip" element={<Trip />} />
+            <Route path="/trip/:id" element={<Trip />} />
             <Route path="/about" element={<About />} />
             </Routes>
           {/* <Center>

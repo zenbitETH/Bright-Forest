@@ -1,6 +1,13 @@
 import data from '../Data/trips.json';
+import { useNavigate } from 'react-router-dom';
 
 const AvailableTrips = () => {
+  const navigate = useNavigate()
+
+  const handleClick = async (id) => {
+    navigate(`/trip/${id}`);
+  }
+
   return (
     <div class="screenMargin grid gap-3">
       <div class="screenTitle">Available Trips</div>
@@ -67,9 +74,7 @@ const AvailableTrips = () => {
               </div>
             </div>
             <div class="mx-20 mt-10 xl:my-auto">
-              <a href="/Trip">
-                <div class="Button">Start trip</div>
-              </a>
+              <div class="Button" onClick={() => {handleClick(trip.id)}}>Start trip</div>
             </div>
           </div>
         </div>
