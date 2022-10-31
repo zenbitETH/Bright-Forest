@@ -1,40 +1,35 @@
 import * as timer from "../Scripts/timer";
 import {calcArea} from "../Scripts/zone";
 import bflogo from '../Assets/BFlogo.svg'
-import tripData from '../Data/trips.json'
+
 import mapStyle from '../Data/mapStyle.json'
 import Location from './Location'
 import { useNavigate } from "react-router-dom"
 import {useRef, useState, useEffect} from 'react'
+import MoonLoader  from 'react-spinners/MoonLoader'
 import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api'
 
-export default function Map ({ id }){
-    const center = {lat:20.59400978585176,lng:-100.40928572380896}
+export default function Map ({ data }){
+
     const containerStyle = {
         width: '100%',
         height: '100vh',
     
     };
-
+    const [center, setCenter] = useState(null)
     const [destination, setDestination] = useState(null);
     const [origin, setOrigin] = useState(null);
     const [preciseDestination, setPreciseDestination] = useState(null);
     const [preciseOrigin, setPreciseOrigin] = useState(null);
     const [trip, setTrip] = useState(null);
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState(data);
     const markers = [];
 
-    const poiMarker = () => {
-        const data = tripData.filter((item) => (item.id == id))
-        const projectData = data[0]
-
-        if (projectData?.startLocation?.coordinates !== undefined){
-            setLocation(projectData)
-        } else {
-            console.log("Something went wrong pulling project data!")
-        }
+    const loadMap = () => {
+        if(data?.startLocation !== undefined){
+            setCenter(data?.startLocation?.coordinates)
+        } 
     }
-
     const startTrip = async (location) => {
         endTrip()
         clearMarkers(markers)
@@ -74,11 +69,16 @@ export default function Map ({ id }){
     }
    
     useEffect(() => {
-        poiMarker()
+        loadMap()
     }, [])
     
     return (
     <>
+        {(center === null || center === undefined) ?
+        <div className="h-screen w-full bg-ride-400 flex justify-center items-center">
+            <MoonLoader color="#ff9b54" />
+        </div>
+        :
         <GoogleMap 
             mapContainerStyle={containerStyle}
             center={center}
@@ -146,8 +146,9 @@ export default function Map ({ id }){
                     }}   
                 />
             </>
-                }
+            }
         </GoogleMap>
+        }
     </>
     );
 }
