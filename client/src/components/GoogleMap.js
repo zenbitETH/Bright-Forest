@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 import {useRef, useState, useEffect} from 'react'
 import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api'
 
-export default function GoogleMap2 (){
+export default function Map ({ id }){
     const center = {lat:20.59400978585176,lng:-100.40928572380896}
     const containerStyle = {
         width: '100%',
@@ -16,7 +16,6 @@ export default function GoogleMap2 (){
     
     };
 
-    const [sites, setSites] = useState([]);
     const [destination, setDestination] = useState(null);
     const [origin, setOrigin] = useState(null);
     const [preciseDestination, setPreciseDestination] = useState(null);
@@ -25,9 +24,15 @@ export default function GoogleMap2 (){
     const [location, setLocation] = useState(null);
     const markers = [];
 
-    const poiMarkers = () => {
-        const validSites = tripData.filter((item) => (item.startLocation?.coordinates !== undefined))
-        setSites(validSites)
+    const poiMarker = () => {
+        const data = tripData.filter((item) => (item.id == id))
+        const projectData = data[0]
+
+        if (projectData?.startLocation?.coordinates !== undefined){
+            setLocation(projectData)
+        } else {
+            console.log("Something went wrong pulling project data!")
+        }
     }
 
     const startTrip = async (location) => {
@@ -69,7 +74,7 @@ export default function GoogleMap2 (){
     }
    
     useEffect(() => {
-        poiMarkers()
+        poiMarker()
     }, [])
     
     return (
@@ -84,21 +89,21 @@ export default function GoogleMap2 (){
             }}
         >
             <Location />
-            {sites.map((location, index) =>(
+
+            { location &&
                 <MarkerF
-                key={index}
-                onClick={() => {startTrip(location)}}
-                onLoad={(marker) => {markers.push(marker)}}
-                icon ={{
-                    url:bflogo,
-                    scaledSize:{
-                        width:50,
-                        height:50
-                    },
-                }}
-                position={location.startLocation.coordinates}
-                />
-                ))}
+                    onClick={() => {startTrip(location)}}
+                    onLoad={(marker) => {markers.push(marker)}}
+                    icon ={{
+                        url:bflogo,
+                        scaledSize:{
+                            width:50,
+                            height:50
+                        },
+                    }}
+                    position={location.startLocation.coordinates}
+                    />
+            }
                 
             {(origin && destination) &&
             <DirectionsService
