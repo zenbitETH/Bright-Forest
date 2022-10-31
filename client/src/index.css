@@ -317,12 +317,12 @@ code {
   xl:w-1/2
 }
 
-.step1, .step2, .step3, .step4 {
+.detectTrip, .startTrip, .activeTrip, .endTrip {
   @apply
    text-white  w-full fixed bottom-5 left-0 right-0 rounded-t-lg drop-shadow-2xl text-ride-100 grid xl:mx-auto xl:w-1/2
 }
 
-.step1 {
+.detectTrip {
   @apply
   bg-ride-500
   h-56
@@ -330,7 +330,7 @@ code {
   grid-cols-3 
 }
 
-.step2 {
+.startTrip {
   @apply
   bg-ride-900 hover:bg-rider-500 hover:cursor-pointer
   h-56
@@ -339,7 +339,7 @@ code {
   grid-cols-3 
 }
 
-.step3 {
+.activeTrip {
   @apply
   bg-rider-500
   h-96
@@ -347,7 +347,7 @@ code {
   grid-cols-4 
 }
 
-.step4 {
+.endTrip {
   @apply
   bg-rider-500 hover:bg-ride-100 hover:text-rider-500 hover:cursor-pointer
   h-56

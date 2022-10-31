@@ -26,7 +26,7 @@ const AvailableTrips = () => {
               {/*Type of place and Name from Punk Cities NFT metadata */}
               <img
               class="PCAsset"
-              src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/0-Public-Park.png"
+              src={trip.details.from.img}
             />
             </div>
             <div class="tripArrow">↓</div>
@@ -40,7 +40,7 @@ const AvailableTrips = () => {
                 {/*Type of place and Name from Punk Cities NFT metadata */}
                 <img
                   class="PCAsset"
-                  src="https://bafybeids5w4e7ybnw5mfpvvsevhllutfkjkbfhhfjft6ff36qwh3ldbj5q.ipfs.nftstorage.link/14-Goverment%20office.png"
+                  src={trip.details.to.img}
                 />
               </div>
           </div>

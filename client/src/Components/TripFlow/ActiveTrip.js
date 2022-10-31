@@ -2,7 +2,7 @@
 const ActiveTrip = () => {
     return (
     <div>
-        <div class="step3">
+        <div class="activeTrip">
             <div class="col-span-4 m-1">Now complete the trip</div>
             <div class="text-left col-span-3 text-2xl my-4 ml-5 ">
                 <span> Santa Mónica</span>

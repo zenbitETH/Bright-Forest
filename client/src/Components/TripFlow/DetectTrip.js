@@ -5,7 +5,7 @@ const DetectTrip = ({data}) => {
     return (
         <div>
             <Map />
-            <div class="startTrip">
+            <div class="detectTrip">
                 <div class="col-span-3 text-white m-1">Go here to start the trip:</div>
                 <div class="text-left text-white col-span-2 text-3xl my-4 ml-5 ">
                     <div>{data.details.from.typeOfPlace}</div>

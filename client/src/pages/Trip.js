@@ -1,17 +1,24 @@
 import Map from "../Components/GoogleMap";
 import Hud from "../Components/Hud";
-import Step1 from "../Components/TripStep1";
-import Step2 from "../Components/TripStep2";
-import Step3 from "../Components/TripStep3";
-import Step4 from "../Components/TripStep4";
+import tripData from '../Data/trips.json'
+import { useState } from 'react';
+import DetectTrip from "../Components/TripFlow/DetectTrip";
+import StartTrip from "../Components/TripFlow/StartTrip";
+import ActiveTrip from "../Components/TripFlow/ActiveTrip";
+import EndTrip from "../Components/TripFlow/EndTrip";
+
 import { useParams } from "react-router-dom";
+
 
 const Trip = () => {
   const { id } = useParams();
+  const data = tripData.filter((item) => (item.id.toString() === id)) // has to be == since id is a string, this is a simplified implementation anyway
+  const projectData = data[0]
+
   return (
     <div className="font-bf text-center">
-      <Map id={id}/>
-      <Step4 id={id}/>
+      <Map data={projectData}/>
+      <DetectTrip data={projectData} />
     </div>
   );
 };

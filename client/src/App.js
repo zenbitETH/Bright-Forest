@@ -15,9 +15,10 @@ import AvailableTrips from "./pages/AvaliableTrips";
 import PastTrips from "./pages/PastTrips";
 import Leaderboard from "./pages/Leaderboard";
 import Trip from "./pages/Trip";
-import TripStep2 from "./Components/TripStep2";
-import TripStep3 from "./Components/TripStep3";
-import TripStep4 from "./Components/TripStep4";
+import DetectTrip from "./Components/TripFlow/DetectTrip";
+import StartTrip from "./Components/TripFlow/StartTrip";
+import ActiveTrip from "./Components/TripFlow/ActiveTrip";
+import EndTrip from "./Components/TripFlow/EndTrip";
 import About from "./pages/About";
 import "./App.css"
 
@@ -56,13 +57,17 @@ const App = () => {
           <Routes>
             <Route path="/" element={<AvailableTrips />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/trip2" element={<TripStep2 />} />
-            <Route path="/trip3" element={<TripStep3 />} />
-            <Route path="/trip4" element={<TripStep4 />} />
+            <Route path="/trip1" element={<DetectTrip />} />
+            <Route path="/trip2" element={<StartTrip />} />
+            <Route path="/trip3" element={<ActiveTrip />} />
+            <Route path="/trip4" element={<EndTrip />} />
             <Route path="/pasttrips" element={<PastTrips />} />
             <Route path="/maponly" element={<Map />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/trip/:id" element={<Trip />} />
+            <Route 
+              path="/trip/:id" 
+              element={<Trip />}
+            />
             <Route path="/about" element={<About />} />
             </Routes>
           {/* <Center>
