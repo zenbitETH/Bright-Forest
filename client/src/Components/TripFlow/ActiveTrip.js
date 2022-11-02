@@ -13,7 +13,7 @@ const ActiveTrip = ({ data }) => {
 
             <div class="tripArrow ">↓</div>
             <div class="text-left col-span-3 text-2xl my-4 ml-5 ">
-                <span>{data.details.from.name}</span>
+                <span>{data.details.to.name}</span>
                 <div>{data.details.to.typeOfPlace}</div>
                 <div class="text-lg">in {data.details.city}</div>
             </div>

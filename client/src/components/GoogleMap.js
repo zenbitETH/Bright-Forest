@@ -1,28 +1,29 @@
 import * as timer from "../Scripts/timer";
-import {calcArea} from "../Scripts/zone";
+import { calcArea } from "../Scripts/zone";
 import bflogo from '../Assets/BFlogo.svg'
-
 import mapStyle from '../Data/mapStyle.json'
 import Location from './Location'
-import { useNavigate } from "react-router-dom"
-import {useRef, useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import MoonLoader  from 'react-spinners/MoonLoader'
-import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer, useGoogleMap} from '@react-google-maps/api'
+import { GoogleMap, MarkerF, DirectionsService, DirectionsRenderer } from '@react-google-maps/api'
 
 export default function Map ({ data }){
 
+    const arrivalConstant = 0.015 // arrival distance in km
     const containerStyle = {
         width: '100%',
         height: '100vh',
     
     };
+
     const [center, setCenter] = useState(null)
     const [destination, setDestination] = useState(null);
     const [origin, setOrigin] = useState(null);
     const [preciseDestination, setPreciseDestination] = useState(null);
     const [preciseOrigin, setPreciseOrigin] = useState(null);
     const [trip, setTrip] = useState(null);
-    const [location, setLocation] = useState(data);
+    const [location, setLocation] = useState(null);
+    const projectData = data;
     const markers = [];
 
     const centerMap = () => {
@@ -37,6 +38,7 @@ export default function Map ({ data }){
         setDestination(location.endLocation.coordinates)
         setOrigin(location.startLocation.coordinates)
     }
+
 
     const endTrip = () => {
         setTrip(null)
@@ -56,6 +58,14 @@ export default function Map ({ data }){
             }
         }
         clearCoordinates()
+    }
+
+    const detectArrival = (latDestination, lngDestination) => {
+        const geoZone = calcArea(latDestination, lngDestination, arrivalConstant)
+        if (location !== null){
+            return geoZone.inArea(location.lat, location.lng)
+        }
+        return false;
     }
    
     const clearMarkers = (markers) => {
@@ -93,11 +103,11 @@ export default function Map ({ data }){
                 }
             }}
         >
-            <Location />
+            <Location setMapLocation={setLocation}/>
 
-            { location &&
+            { projectData &&
                 <MarkerF
-                    onClick={() => {startTrip(location)}}
+                    onClick={() => {startTrip(projectData)}}
                     onLoad={(marker) => {markers.push(marker)}}
                     icon ={{
                         url:bflogo,
@@ -106,7 +116,7 @@ export default function Map ({ data }){
                             height:50
                         },
                     }}
-                    position={location.startLocation.coordinates}
+                    position={projectData.startLocation.coordinates}
                     />
             }
                 

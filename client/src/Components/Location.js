@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { MarkerF } from '@react-google-maps/api';
 import locationMarker from '../Assets/locationMarker.png'
 
-export default function Location() { 
+export default function Location({setMapLocation}) { 
 
     const [location, setLocation] = useState(null);
     const options = {
@@ -16,6 +16,7 @@ export default function Location() {
         if(cords.latitude !== undefined && cords.longitude !== undefined) {
             const currentLocation = { lat:cords.latitude, lng: cords.longitude }
             setLocation(currentLocation)
+            setMapLocation(currentLocation)
         }
         
     }
@@ -30,7 +31,6 @@ export default function Location() {
 
     useEffect(()=>{
         const id = setInterval(getLocation, 5000);
-
         return () => {
             clearInterval(id)
         }
