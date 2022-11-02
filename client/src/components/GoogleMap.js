@@ -7,7 +7,7 @@ import Location from './Location'
 import { useNavigate } from "react-router-dom"
 import {useRef, useState, useEffect} from 'react'
 import MoonLoader  from 'react-spinners/MoonLoader'
-import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer} from '@react-google-maps/api'
+import {GoogleMap, MarkerF, DirectionsService, DirectionsRenderer, useGoogleMap} from '@react-google-maps/api'
 
 export default function Map ({ data }){
 
@@ -25,11 +25,12 @@ export default function Map ({ data }){
     const [location, setLocation] = useState(data);
     const markers = [];
 
-    const loadMap = () => {
+    const centerMap = () => {
         if(data?.startLocation !== undefined){
             setCenter(data?.startLocation?.coordinates)
         } 
     }
+
     const startTrip = async (location) => {
         endTrip()
         clearMarkers(markers)
@@ -69,7 +70,7 @@ export default function Map ({ data }){
     }
    
     useEffect(() => {
-        loadMap()
+        centerMap()
     }, [])
     
     return (
@@ -85,7 +86,11 @@ export default function Map ({ data }){
             zoom={12}
             options={{
                 styles:mapStyle,
-                disableDefaultUI:true
+                disableDefaultUI:true,
+                restriction: {
+                    latLngBounds:{north: 85, south: -85, west: -180, east: 180},
+                    strictBounds: true
+                }
             }}
         >
             <Location />
