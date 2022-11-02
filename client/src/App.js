@@ -62,7 +62,6 @@ const App = () => {
             <Route path="/trip3" element={<ActiveTrip />} />
             <Route path="/trip4" element={<EndTrip />} />
             <Route path="/pasttrips" element={<PastTrips />} />
-            <Route path="/maponly" element={<Map />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route 
               path="/trip/:id" 

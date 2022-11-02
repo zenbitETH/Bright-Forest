@@ -18,7 +18,8 @@ const Trip = () => {
   return (
     <div className="font-bf text-center">
       <Map data={projectData}/>
-      <DetectTrip data={projectData} />
+      {/* <DetectTrip data={projectData} /> */}
+      <EndTrip data={projectData} />
     </div>
   );
 };
